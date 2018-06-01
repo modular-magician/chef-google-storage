@@ -87,6 +87,34 @@ For complete details of the authentication cookbook, visit the
     and call all BucketAccessControls methods on the bucket.  For more
     information, see Access Control, with the caveat that this API uses
     READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
+* [`gstorage_object_access_control`](#gstorage_object_access_control) -
+    The ObjectAccessControls resources represent the Access Control Lists
+    (ACLs) for objects within Google Cloud Storage. ACLs let you specify
+    who has access to your data and to what extent.
+    There are two roles that can be assigned to an entity:
+    READERs can get an object, though the acl property will not be
+    revealed.
+    OWNERs are READERs, and they can get the acl property, update an
+    object,
+    and call all objectAccessControls methods on the object. The owner of
+    an
+    object is always an OWNER.
+    For more information, see Access Control, with the caveat that this API
+    uses READER and OWNER instead of READ and FULL_CONTROL.
+* [`gstorage_default_object_acl`](#gstorage_default_object_acl) -
+    The ObjectAccessControls resources represent the Access Control Lists
+    (ACLs) for objects within Google Cloud Storage. ACLs let you specify
+    who has access to your data and to what extent.
+    There are two roles that can be assigned to an entity:
+    READERs can get an object, though the acl property will not be
+    revealed.
+    OWNERs are READERs, and they can get the acl property, update an
+    object,
+    and call all objectAccessControls methods on the object. The owner of
+    an
+    object is always an OWNER.
+    For more information, see Access Control, with the caveat that this API
+    uses READER and OWNER instead of READ and FULL_CONTROL.
 
 
 ### gstorage_bucket
@@ -150,6 +178,24 @@ gstorage_bucket 'id-for-resource' do
         string,
         ...
       ],
+    },
+    ...
+  ]
+  default_object_acl            [
+    {
+      bucket       reference to gstorage_bucket,
+      domain       string,
+      email        string,
+      entity       string,
+      entity_id    string,
+      generation   integer,
+      id           string,
+      object       string,
+      role         'OWNER' or 'READER',
+      project_team {
+        team           'editors', 'owners' or 'viewers',
+        project_number string,
+      },
     },
     ...
   ]
@@ -282,6 +328,60 @@ end
 * `cors[]/response_header`
   The list of HTTP headers other than the simple response headers
   to give permission for the user-agent to share across domains.
+
+* `default_object_acl` -
+  Default access controls to apply to new objects when no ACL is
+  provided.
+
+* `default_object_acl[]/bucket`
+  Required. The name of the bucket.
+
+* `default_object_acl[]/domain`
+  Output only. The domain associated with the entity.
+
+* `default_object_acl[]/email`
+  Output only. The email address associated with the entity.
+
+* `default_object_acl[]/entity`
+  Required. The entity holding the permission, in one of the following forms:
+  user-userId
+  user-email
+  group-groupId
+  group-email
+  domain-domain
+  project-team-projectId
+  allUsers
+  allAuthenticatedUsers
+  Examples:
+  The user liz@example.com would be user-liz@example.com.
+  The group example@googlegroups.com would be
+  group-example@googlegroups.com.
+  To refer to all members of the Google Apps for Business domain
+  example.com, the entity would be domain-example.com.
+
+* `default_object_acl[]/entity_id`
+  The ID for the entity
+
+* `default_object_acl[]/generation`
+  Output only. The content generation of the object, if applied to an object.
+
+* `default_object_acl[]/id`
+  Output only. The ID of the access-control entry.
+
+* `default_object_acl[]/object`
+  The name of the object, if applied to an object.
+
+* `default_object_acl[]/project_team`
+  The project team associated with the entity
+
+* `default_object_acl[]/project_team/project_number`
+  The project team associated with the entity
+
+* `default_object_acl[]/project_team/team`
+  The team.
+
+* `default_object_acl[]/role`
+  The access permission for the entity.
 
 * `id` -
   Output only. The ID of the bucket. For buckets, the id and name properities
@@ -545,6 +645,248 @@ end
 
 #### Label
 Set the `bac_label` property when attempting to set primary key
+of this object. The primary key will always be referred to by the initials of
+the resource followed by "_label"
+
+### gstorage_object_access_control
+The ObjectAccessControls resources represent the Access Control Lists
+(ACLs) for objects within Google Cloud Storage. ACLs let you specify
+who has access to your data and to what extent.
+
+There are two roles that can be assigned to an entity:
+
+READERs can get an object, though the acl property will not be revealed.
+OWNERs are READERs, and they can get the acl property, update an object,
+and call all objectAccessControls methods on the object. The owner of an
+object is always an OWNER.
+For more information, see Access Control, with the caveat that this API
+uses READER and OWNER instead of READ and FULL_CONTROL.
+
+
+#### Example
+
+```ruby
+# Object Access Control requires a bucket. Please ensure its existence with
+# the gstorage_bucket { ... } resource.  The object in question does not
+# need to exist for the creation to succeed.
+gstorage_object_access_control 'user-nelsona@google.com' do
+  action :create
+  bucket 'storage-module-test'
+  object 'example-object-controlled-by-acl'
+  entity 'user-nelsona@google.com'
+  role 'WRITER'
+  project 'google.com:graphite-playground'
+  credential 'mycred'
+end
+
+```
+
+#### Reference
+
+```ruby
+gstorage_object_access_control 'id-for-resource' do
+  bucket       reference to gstorage_bucket
+  domain       string
+  email        string
+  entity       string
+  entity_id    string
+  generation   integer
+  id           string
+  object       string
+  role         'OWNER' or 'READER'
+  project_team {
+    team           'editors', 'owners' or 'viewers',
+    project_number string,
+  }
+  project      string
+  credential   reference to gauth_credential
+end
+```
+
+#### Actions
+
+* `create` -
+  Converges the `gstorage_object_access_control` resource into the final
+  state described within the block. If the resource does not exist, Chef will
+  attempt to create it.
+* `delete` -
+  Ensures the `gstorage_object_access_control` resource is not present.
+  If the resource already exists Chef will attempt to delete it.
+
+#### Properties
+
+* `bucket` -
+  Required. The name of the bucket.
+
+* `domain` -
+  Output only. The domain associated with the entity.
+
+* `email` -
+  Output only. The email address associated with the entity.
+
+* `entity` -
+  Required. The entity holding the permission, in one of the following forms:
+  user-userId
+  user-email
+  group-groupId
+  group-email
+  domain-domain
+  project-team-projectId
+  allUsers
+  allAuthenticatedUsers
+  Examples:
+  The user liz@example.com would be user-liz@example.com.
+  The group example@googlegroups.com would be
+  group-example@googlegroups.com.
+  To refer to all members of the Google Apps for Business domain
+  example.com, the entity would be domain-example.com.
+
+* `entity_id` -
+  The ID for the entity
+
+* `generation` -
+  Output only. The content generation of the object, if applied to an object.
+
+* `id` -
+  Output only. The ID of the access-control entry.
+
+* `object` -
+  Required. The name of the object, if applied to an object.
+
+* `project_team` -
+  The project team associated with the entity
+
+* `project_team/project_number`
+  The project team associated with the entity
+
+* `project_team/team`
+  The team.
+
+* `role` -
+  The access permission for the entity.
+
+#### Label
+Set the `oac_label` property when attempting to set primary key
+of this object. The primary key will always be referred to by the initials of
+the resource followed by "_label"
+
+### gstorage_default_object_acl
+The ObjectAccessControls resources represent the Access Control Lists
+(ACLs) for objects within Google Cloud Storage. ACLs let you specify
+who has access to your data and to what extent.
+
+There are two roles that can be assigned to an entity:
+
+READERs can get an object, though the acl property will not be revealed.
+OWNERs are READERs, and they can get the acl property, update an object,
+and call all objectAccessControls methods on the object. The owner of an
+object is always an OWNER.
+For more information, see Access Control, with the caveat that this API
+uses READER and OWNER instead of READ and FULL_CONTROL.
+
+
+#### Example
+
+```ruby
+# Default Object ACL requires a bucket. Please ensure its existence with
+# the gstorage_bucket { ... } resource
+gstorage_default_object_acl 'user-nelsona@google.com' do
+  action :create
+  bucket 'storage-module-test'
+  entity 'user-nelsona@google.com'
+  role 'WRITER'
+  project 'google.com:graphite-playground'
+  credential 'mycred'
+end
+
+```
+
+#### Reference
+
+```ruby
+gstorage_default_object_acl 'id-for-resource' do
+  bucket       reference to gstorage_bucket
+  domain       string
+  email        string
+  entity       string
+  entity_id    string
+  generation   integer
+  id           string
+  object       string
+  role         'OWNER' or 'READER'
+  project_team {
+    team           'editors', 'owners' or 'viewers',
+    project_number string,
+  }
+  project      string
+  credential   reference to gauth_credential
+end
+```
+
+#### Actions
+
+* `create` -
+  Converges the `gstorage_default_object_acl` resource into the final
+  state described within the block. If the resource does not exist, Chef will
+  attempt to create it.
+* `delete` -
+  Ensures the `gstorage_default_object_acl` resource is not present.
+  If the resource already exists Chef will attempt to delete it.
+
+#### Properties
+
+* `bucket` -
+  Required. The name of the bucket.
+
+* `domain` -
+  Output only. The domain associated with the entity.
+
+* `email` -
+  Output only. The email address associated with the entity.
+
+* `entity` -
+  Required. The entity holding the permission, in one of the following forms:
+  user-userId
+  user-email
+  group-groupId
+  group-email
+  domain-domain
+  project-team-projectId
+  allUsers
+  allAuthenticatedUsers
+  Examples:
+  The user liz@example.com would be user-liz@example.com.
+  The group example@googlegroups.com would be
+  group-example@googlegroups.com.
+  To refer to all members of the Google Apps for Business domain
+  example.com, the entity would be domain-example.com.
+
+* `entity_id` -
+  The ID for the entity
+
+* `generation` -
+  Output only. The content generation of the object, if applied to an object.
+
+* `id` -
+  Output only. The ID of the access-control entry.
+
+* `object` -
+  The name of the object, if applied to an object.
+
+* `project_team` -
+  The project team associated with the entity
+
+* `project_team/project_number`
+  The project team associated with the entity
+
+* `project_team/team`
+  The team.
+
+* `role` -
+  The access permission for the entity.
+
+#### Label
+Set the `doa_label` property when attempting to set primary key
 of this object. The primary key will always be referred to by the initials of
 the resource followed by "_label"
 

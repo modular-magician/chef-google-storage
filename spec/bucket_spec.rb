@@ -144,6 +144,23 @@ context 'gstorage_bucket' do
                         response_header: ['hh', 'ii', 'jj', 'kk', 'll']
                       }
                     ]
+                    default_object_acl [
+                      {
+                        bucket: 'resource(bucket,0)',
+                        domain: 'test domain#0 data',
+                        email: 'test email#0 data',
+                        entity: 'test entity#0 data',
+                        entity_id: 'test entity_id#0 data',
+                        generation: 2373482136,
+                        id: 'test id#0 data',
+                        object: 'test object#0 data',
+                        role: 'OWNER',
+                        project_team: {
+                          team: 'editors',
+                          project_number: 'test project_number#0 data'
+                        }
+                      }
+                    ]
                     lifecycle({
                       rule: [
                         {
@@ -292,6 +309,53 @@ context 'gstorage_bucket' do
                         response_header: ['ff', 'gg', 'hh', 'ii', 'jj']
                       }
                     ]
+                    default_object_acl [
+                      {
+                        bucket: 'resource(bucket,1)',
+                        domain: 'test domain#1 data',
+                        email: 'test email#1 data',
+                        entity: 'test entity#1 data',
+                        entity_id: 'test entity_id#1 data',
+                        generation: 4746964272,
+                        id: 'test id#1 data',
+                        object: 'test object#1 data',
+                        role: 'READER',
+                        project_team: {
+                          team: 'owners',
+                          project_number: 'test project_number#1 data'
+                        }
+                      },
+                      {
+                        bucket: 'resource(bucket,2)',
+                        domain: 'test domain#2 data',
+                        email: 'test email#2 data',
+                        entity: 'test entity#2 data',
+                        entity_id: 'test entity_id#2 data',
+                        generation: 7120446408,
+                        id: 'test id#2 data',
+                        object: 'test object#2 data',
+                        role: 'OWNER',
+                        project_team: {
+                          team: 'viewers',
+                          project_number: 'test project_number#2 data'
+                        }
+                      },
+                      {
+                        bucket: 'resource(bucket,0)',
+                        domain: 'test domain#3 data',
+                        email: 'test email#3 data',
+                        entity: 'test entity#3 data',
+                        entity_id: 'test entity_id#3 data',
+                        generation: 9493928544,
+                        id: 'test id#3 data',
+                        object: 'test object#3 data',
+                        role: 'READER',
+                        project_team: {
+                          team: 'editors',
+                          project_number: 'test project_number#3 data'
+                        }
+                      }
+                    ]
                     lifecycle({
                       rule: [
                         {
@@ -418,6 +482,53 @@ context 'gstorage_bucket' do
                         method: ['gg', 'hh', 'ii', 'jj'],
                         origin: ['oo', 'pp'],
                         response_header: ['cc', 'dd', 'ee', 'ff']
+                      }
+                    ]
+                    default_object_acl [
+                      {
+                        bucket: 'resource(bucket,2)',
+                        domain: 'test domain#2 data',
+                        email: 'test email#2 data',
+                        entity: 'test entity#2 data',
+                        entity_id: 'test entity_id#2 data',
+                        generation: 7120446408,
+                        id: 'test id#2 data',
+                        object: 'test object#2 data',
+                        role: 'OWNER',
+                        project_team: {
+                          team: 'viewers',
+                          project_number: 'test project_number#2 data'
+                        }
+                      },
+                      {
+                        bucket: 'resource(bucket,0)',
+                        domain: 'test domain#3 data',
+                        email: 'test email#3 data',
+                        entity: 'test entity#3 data',
+                        entity_id: 'test entity_id#3 data',
+                        generation: 9493928544,
+                        id: 'test id#3 data',
+                        object: 'test object#3 data',
+                        role: 'READER',
+                        project_team: {
+                          team: 'editors',
+                          project_number: 'test project_number#3 data'
+                        }
+                      },
+                      {
+                        bucket: 'resource(bucket,1)',
+                        domain: 'test domain#4 data',
+                        email: 'test email#4 data',
+                        entity: 'test entity#4 data',
+                        entity_id: 'test entity_id#4 data',
+                        generation: 11867410680,
+                        id: 'test id#4 data',
+                        object: 'test object#4 data',
+                        role: 'OWNER',
+                        project_team: {
+                          team: 'owners',
+                          project_number: 'test project_number#4 data'
+                        }
                       }
                     ]
                     lifecycle({
@@ -634,6 +745,23 @@ context 'gstorage_bucket' do
                         response_header: ['hh', 'ii', 'jj', 'kk', 'll']
                       }
                     ]
+                    default_object_acl [
+                      {
+                        bucket: 'resource(bucket,0)',
+                        domain: 'test domain#0 data',
+                        email: 'test email#0 data',
+                        entity: 'test entity#0 data',
+                        entity_id: 'test entity_id#0 data',
+                        generation: 2373482136,
+                        id: 'test id#0 data',
+                        object: 'test object#0 data',
+                        role: 'OWNER',
+                        project_team: {
+                          team: 'editors',
+                          project_number: 'test project_number#0 data'
+                        }
+                      }
+                    ]
                     lifecycle({
                       rule: [
                         {
@@ -783,6 +911,53 @@ context 'gstorage_bucket' do
                         response_header: ['ff', 'gg', 'hh', 'ii', 'jj']
                       }
                     ]
+                    default_object_acl [
+                      {
+                        bucket: 'resource(bucket,1)',
+                        domain: 'test domain#1 data',
+                        email: 'test email#1 data',
+                        entity: 'test entity#1 data',
+                        entity_id: 'test entity_id#1 data',
+                        generation: 4746964272,
+                        id: 'test id#1 data',
+                        object: 'test object#1 data',
+                        role: 'READER',
+                        project_team: {
+                          team: 'owners',
+                          project_number: 'test project_number#1 data'
+                        }
+                      },
+                      {
+                        bucket: 'resource(bucket,2)',
+                        domain: 'test domain#2 data',
+                        email: 'test email#2 data',
+                        entity: 'test entity#2 data',
+                        entity_id: 'test entity_id#2 data',
+                        generation: 7120446408,
+                        id: 'test id#2 data',
+                        object: 'test object#2 data',
+                        role: 'OWNER',
+                        project_team: {
+                          team: 'viewers',
+                          project_number: 'test project_number#2 data'
+                        }
+                      },
+                      {
+                        bucket: 'resource(bucket,0)',
+                        domain: 'test domain#3 data',
+                        email: 'test email#3 data',
+                        entity: 'test entity#3 data',
+                        entity_id: 'test entity_id#3 data',
+                        generation: 9493928544,
+                        id: 'test id#3 data',
+                        object: 'test object#3 data',
+                        role: 'READER',
+                        project_team: {
+                          team: 'editors',
+                          project_number: 'test project_number#3 data'
+                        }
+                      }
+                    ]
                     lifecycle({
                       rule: [
                         {
@@ -910,6 +1085,53 @@ context 'gstorage_bucket' do
                         method: ['gg', 'hh', 'ii', 'jj'],
                         origin: ['oo', 'pp'],
                         response_header: ['cc', 'dd', 'ee', 'ff']
+                      }
+                    ]
+                    default_object_acl [
+                      {
+                        bucket: 'resource(bucket,2)',
+                        domain: 'test domain#2 data',
+                        email: 'test email#2 data',
+                        entity: 'test entity#2 data',
+                        entity_id: 'test entity_id#2 data',
+                        generation: 7120446408,
+                        id: 'test id#2 data',
+                        object: 'test object#2 data',
+                        role: 'OWNER',
+                        project_team: {
+                          team: 'viewers',
+                          project_number: 'test project_number#2 data'
+                        }
+                      },
+                      {
+                        bucket: 'resource(bucket,0)',
+                        domain: 'test domain#3 data',
+                        email: 'test email#3 data',
+                        entity: 'test entity#3 data',
+                        entity_id: 'test entity_id#3 data',
+                        generation: 9493928544,
+                        id: 'test id#3 data',
+                        object: 'test object#3 data',
+                        role: 'READER',
+                        project_team: {
+                          team: 'editors',
+                          project_number: 'test project_number#3 data'
+                        }
+                      },
+                      {
+                        bucket: 'resource(bucket,1)',
+                        domain: 'test domain#4 data',
+                        email: 'test email#4 data',
+                        entity: 'test entity#4 data',
+                        entity_id: 'test entity_id#4 data',
+                        generation: 11867410680,
+                        id: 'test id#4 data',
+                        object: 'test object#4 data',
+                        role: 'OWNER',
+                        project_team: {
+                          team: 'owners',
+                          project_number: 'test project_number#4 data'
+                        }
                       }
                     ]
                     lifecycle({
@@ -1128,6 +1350,23 @@ context 'gstorage_bucket' do
                     'responseHeader' => %w[hh ii jj kk ll]
                   }
                 ],
+                'defaultObjectAcl' => [
+                  {
+                    'bucket' => 'test name#0 data',
+                    'domain' => 'test domain#0 data',
+                    'email' => 'test email#0 data',
+                    'entity' => 'test entity#0 data',
+                    'entityId' => 'test entity_id#0 data',
+                    'generation' => 2_373_482_136,
+                    'id' => 'test id#0 data',
+                    'object' => 'test object#0 data',
+                    'projectTeam' => {
+                      'projectNumber' => 'test project_number#0 data',
+                      'team' => 'editors'
+                    },
+                    'role' => 'OWNER'
+                  }
+                ],
                 'lifecycle' => {
                   'rule' => [
                     {
@@ -1287,6 +1526,23 @@ context 'gstorage_bucket' do
                       response_header: ['hh', 'ii', 'jj', 'kk', 'll']
                     }
                   ]
+                  default_object_acl [
+                    {
+                      bucket: 'resource(bucket,0)',
+                      domain: 'test domain#0 data',
+                      email: 'test email#0 data',
+                      entity: 'test entity#0 data',
+                      entity_id: 'test entity_id#0 data',
+                      generation: 2373482136,
+                      id: 'test id#0 data',
+                      object: 'test object#0 data',
+                      role: 'OWNER',
+                      project_team: {
+                        team: 'editors',
+                        project_number: 'test project_number#0 data'
+                      }
+                    }
+                  ]
                   lifecycle({
                     rule: [
                       {
@@ -1435,6 +1691,53 @@ context 'gstorage_bucket' do
                       response_header: ['ff', 'gg', 'hh', 'ii', 'jj']
                     }
                   ]
+                  default_object_acl [
+                    {
+                      bucket: 'resource(bucket,1)',
+                      domain: 'test domain#1 data',
+                      email: 'test email#1 data',
+                      entity: 'test entity#1 data',
+                      entity_id: 'test entity_id#1 data',
+                      generation: 4746964272,
+                      id: 'test id#1 data',
+                      object: 'test object#1 data',
+                      role: 'READER',
+                      project_team: {
+                        team: 'owners',
+                        project_number: 'test project_number#1 data'
+                      }
+                    },
+                    {
+                      bucket: 'resource(bucket,2)',
+                      domain: 'test domain#2 data',
+                      email: 'test email#2 data',
+                      entity: 'test entity#2 data',
+                      entity_id: 'test entity_id#2 data',
+                      generation: 7120446408,
+                      id: 'test id#2 data',
+                      object: 'test object#2 data',
+                      role: 'OWNER',
+                      project_team: {
+                        team: 'viewers',
+                        project_number: 'test project_number#2 data'
+                      }
+                    },
+                    {
+                      bucket: 'resource(bucket,0)',
+                      domain: 'test domain#3 data',
+                      email: 'test email#3 data',
+                      entity: 'test entity#3 data',
+                      entity_id: 'test entity_id#3 data',
+                      generation: 9493928544,
+                      id: 'test id#3 data',
+                      object: 'test object#3 data',
+                      role: 'READER',
+                      project_team: {
+                        team: 'editors',
+                        project_number: 'test project_number#3 data'
+                      }
+                    }
+                  ]
                   lifecycle({
                     rule: [
                       {
@@ -1569,6 +1872,23 @@ context 'gstorage_bucket' do
                   'method' => %w[ff gg hh ii jj],
                   'origin' => %w[tt uu vv],
                   'responseHeader' => %w[hh ii jj kk ll]
+                }
+              ],
+              'defaultObjectAcl' => [
+                {
+                  'bucket' => 'test name#0 data',
+                  'domain' => 'test domain#0 data',
+                  'email' => 'test email#0 data',
+                  'entity' => 'test entity#0 data',
+                  'entityId' => 'test entity_id#0 data',
+                  'generation' => 2_373_482_136,
+                  'id' => 'test id#0 data',
+                  'object' => 'test object#0 data',
+                  'projectTeam' => {
+                    'projectNumber' => 'test project_number#0 data',
+                    'team' => 'editors'
+                  },
+                  'role' => 'OWNER'
                 }
               ],
               'lifecycle' => {
@@ -1729,6 +2049,23 @@ context 'gstorage_bucket' do
                       response_header: ['hh', 'ii', 'jj', 'kk', 'll']
                     }
                   ]
+                  default_object_acl [
+                    {
+                      bucket: 'resource(bucket,0)',
+                      domain: 'test domain#0 data',
+                      email: 'test email#0 data',
+                      entity: 'test entity#0 data',
+                      entity_id: 'test entity_id#0 data',
+                      generation: 2373482136,
+                      id: 'test id#0 data',
+                      object: 'test object#0 data',
+                      role: 'OWNER',
+                      project_team: {
+                        team: 'editors',
+                        project_number: 'test project_number#0 data'
+                      }
+                    }
+                  ]
                   lifecycle({
                     rule: [
                       {
@@ -1876,6 +2213,53 @@ context 'gstorage_bucket' do
                       method: ['tt', 'uu', 'vv', 'ww', 'xx'],
                       origin: ['qq', 'rr', 'ss', 'tt'],
                       response_header: ['ff', 'gg', 'hh', 'ii', 'jj']
+                    }
+                  ]
+                  default_object_acl [
+                    {
+                      bucket: 'resource(bucket,1)',
+                      domain: 'test domain#1 data',
+                      email: 'test email#1 data',
+                      entity: 'test entity#1 data',
+                      entity_id: 'test entity_id#1 data',
+                      generation: 4746964272,
+                      id: 'test id#1 data',
+                      object: 'test object#1 data',
+                      role: 'READER',
+                      project_team: {
+                        team: 'owners',
+                        project_number: 'test project_number#1 data'
+                      }
+                    },
+                    {
+                      bucket: 'resource(bucket,2)',
+                      domain: 'test domain#2 data',
+                      email: 'test email#2 data',
+                      entity: 'test entity#2 data',
+                      entity_id: 'test entity_id#2 data',
+                      generation: 7120446408,
+                      id: 'test id#2 data',
+                      object: 'test object#2 data',
+                      role: 'OWNER',
+                      project_team: {
+                        team: 'viewers',
+                        project_number: 'test project_number#2 data'
+                      }
+                    },
+                    {
+                      bucket: 'resource(bucket,0)',
+                      domain: 'test domain#3 data',
+                      email: 'test email#3 data',
+                      entity: 'test entity#3 data',
+                      entity_id: 'test entity_id#3 data',
+                      generation: 9493928544,
+                      id: 'test id#3 data',
+                      object: 'test object#3 data',
+                      role: 'READER',
+                      project_team: {
+                        team: 'editors',
+                        project_number: 'test project_number#3 data'
+                      }
                     }
                   ]
                   lifecycle({

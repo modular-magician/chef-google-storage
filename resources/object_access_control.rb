@@ -34,110 +34,56 @@ require 'google/storage/network/delete'
 require 'google/storage/network/get'
 require 'google/storage/network/post'
 require 'google/storage/network/put'
-require 'google/storage/property/boolean'
-require 'google/storage/property/bucket_acl'
-require 'google/storage/property/bucket_action'
-require 'google/storage/property/bucket_condition'
-require 'google/storage/property/bucket_cors'
-require 'google/storage/property/bucket_default_object_acl'
-require 'google/storage/property/bucket_lifecycle'
-require 'google/storage/property/bucket_logging'
 require 'google/storage/property/bucket_name'
-require 'google/storage/property/bucket_owner'
-require 'google/storage/property/bucket_project_team'
-require 'google/storage/property/bucket_rule'
-require 'google/storage/property/bucket_versioning'
-require 'google/storage/property/bucket_website'
 require 'google/storage/property/enum'
 require 'google/storage/property/integer'
+require 'google/storage/property/objectaccesscontrol_project_team'
 require 'google/storage/property/string'
-require 'google/storage/property/string_array'
-require 'google/storage/property/time'
 
 module Google
   module GSTORAGE
     # A provider to manage Google Cloud Storage resources.
-    # rubocop:disable Metrics/ClassLength
-    class Bucket < Chef::Resource
-      resource_name :gstorage_bucket
+    class ObjectAccessControl < Chef::Resource
+      resource_name :gstorage_object_access_control
 
-      # acl is Array of Google::Storage::Property::BucketAclArray
-      property :acl,
-               Array,
-               coerce: ::Google::Storage::Property::BucketAclArray.coerce,
+      property :bucket,
+               [String, ::Google::Storage::Data::BucketNameRef],
+               coerce: ::Google::Storage::Property::BucketNameRef.coerce,
                desired_state: true
-      # cors is Array of Google::Storage::Property::BucketCorsArray
-      property :cors,
-               Array,
-               coerce: ::Google::Storage::Property::BucketCorsArray.coerce,
+      property :domain,
+               String,
+               coerce: ::Google::Storage::Property::String.coerce,
                desired_state: true
-      # default_object_acl is Array of
-      # Google::Storage::Property::BuckeDefauObjecAclArray
-      property :default_object_acl,
-               Array,
-               coerce: \
-                 ::Google::Storage::Property::BuckeDefauObjecAclArray.coerce,
+      property :email,
+               String,
+               coerce: ::Google::Storage::Property::String.coerce,
+               desired_state: true
+      property :entity,
+               String,
+               coerce: ::Google::Storage::Property::String.coerce,
+               desired_state: true
+      property :entity_id,
+               String,
+               coerce: ::Google::Storage::Property::String.coerce,
+               desired_state: true
+      property :generation,
+               Integer,
+               coerce: ::Google::Storage::Property::Integer.coerce,
                desired_state: true
       property :id,
                String,
                coerce: ::Google::Storage::Property::String.coerce,
                desired_state: true
-      property :lifecycle,
-               [Hash, ::Google::Storage::Data::BucketLifecycle],
-               coerce: ::Google::Storage::Property::BucketLifecycle.coerce,
-               desired_state: true
-      property :location,
+      property :object,
                String,
                coerce: ::Google::Storage::Property::String.coerce,
                desired_state: true
-      property :logging,
-               [Hash, ::Google::Storage::Data::BucketLogging],
-               coerce: ::Google::Storage::Property::BucketLogging.coerce,
+      property :project_team,
+               [Hash, ::Google::Storage::Data::ObjeAcceContProjTeam],
+               coerce: ::Google::Storage::Property::ObjeAcceContProjTeam.coerce,
                desired_state: true
-      property :metageneration,
-               Integer,
-               coerce: ::Google::Storage::Property::Integer.coerce,
-               desired_state: true
-      property :b_label,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               name_property: true, desired_state: true
-      property :owner,
-               [Hash, ::Google::Storage::Data::BucketOwner],
-               coerce: ::Google::Storage::Property::BucketOwner.coerce,
-               desired_state: true
-      property :project_number,
-               Integer,
-               coerce: ::Google::Storage::Property::Integer.coerce,
-               desired_state: true
-      property :storage_class,
-               equal_to: %w[MULTI_REGIONAL REGIONAL STANDARD
-                            NEARLINE COLDLINE DURABLE_REDUCED_AVAILABILITY],
-               coerce: ::Google::Storage::Property::Enum.coerce,
-               desired_state: true
-      property :time_created,
-               Time,
-               coerce: ::Google::Storage::Property::Time.coerce,
-               desired_state: true
-      property :_updated,
-               Time,
-               coerce: ::Google::Storage::Property::Time.coerce,
-               desired_state: true
-      property :versioning,
-               [Hash, ::Google::Storage::Data::BucketVersioning],
-               coerce: ::Google::Storage::Property::BucketVersioning.coerce,
-               desired_state: true
-      property :website,
-               [Hash, ::Google::Storage::Data::BucketWebsite],
-               coerce: ::Google::Storage::Property::BucketWebsite.coerce,
-               desired_state: true
-      property :project,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
-      property :predefined_default_object_acl,
-               equal_to: %w[authenticatedRead bucketOwnerFullControl
-                            bucketOwnerRead private projectPrivate publicRead],
+      property :role,
+               equal_to: %w[OWNER READER],
                coerce: ::Google::Storage::Property::Enum.coerce,
                desired_state: true
 
@@ -146,9 +92,10 @@ module Google
 
       action :create do
         fetch = fetch_resource(@new_resource, self_link(@new_resource),
-                               'storage#bucket')
+                               'storage#objectAccessControl')
         if fetch.nil?
-          converge_by "Creating gstorage_bucket[#{new_resource.name}]" do
+          converge_by ['Creating gstorage_object_access_control',
+                       "[#{new_resource.name}]"].join do
             # TODO(nelsonjr): Show a list of variables to create
             # TODO(nelsonjr): Determine how to print green like update converge
             puts # making a newline until we find a better way TODO: find!
@@ -157,56 +104,36 @@ module Google
               collection(@new_resource), fetch_auth(@new_resource),
               'application/json', resource_to_request
             )
-            return_if_object create_req.send, 'storage#bucket'
+            return_if_object create_req.send, 'storage#objectAccessControl'
           end
         else
           @current_resource = @new_resource.clone
-          @current_resource.acl =
-            ::Google::Storage::Property::BucketAclArray.api_parse(
-              fetch['acl']
+          @current_resource.bucket =
+            ::Google::Storage::Property::BucketNameRef.api_parse(
+              fetch['bucket']
             )
-          @current_resource.cors =
-            ::Google::Storage::Property::BucketCorsArray.api_parse(
-              fetch['cors']
+          @current_resource.domain =
+            ::Google::Storage::Property::String.api_parse(fetch['domain'])
+          @current_resource.email =
+            ::Google::Storage::Property::String.api_parse(fetch['email'])
+          @current_resource.entity =
+            ::Google::Storage::Property::String.api_parse(fetch['entity'])
+          @current_resource.entity_id =
+            ::Google::Storage::Property::String.api_parse(fetch['entityId'])
+          @current_resource.generation =
+            ::Google::Storage::Property::Integer.api_parse(
+              fetch['generation']
             )
           @current_resource.id =
             ::Google::Storage::Property::String.api_parse(fetch['id'])
-          @current_resource.lifecycle =
-            ::Google::Storage::Property::BucketLifecycle.api_parse(
-              fetch['lifecycle']
+          @current_resource.object =
+            ::Google::Storage::Property::String.api_parse(fetch['object'])
+          @current_resource.project_team =
+            ::Google::Storage::Property::ObjeAcceContProjTeam.api_parse(
+              fetch['projectTeam']
             )
-          @current_resource.location =
-            ::Google::Storage::Property::String.api_parse(fetch['location'])
-          @current_resource.logging =
-            ::Google::Storage::Property::BucketLogging.api_parse(
-              fetch['logging']
-            )
-          @current_resource.metageneration =
-            ::Google::Storage::Property::Integer.api_parse(
-              fetch['metageneration']
-            )
-          @current_resource.b_label =
-            ::Google::Storage::Property::String.api_parse(fetch['name'])
-          @current_resource.owner =
-            ::Google::Storage::Property::BucketOwner.api_parse(fetch['owner'])
-          @current_resource.project_number =
-            ::Google::Storage::Property::Integer.api_parse(
-              fetch['projectNumber']
-            )
-          @current_resource.storage_class =
-            ::Google::Storage::Property::Enum.api_parse(fetch['storageClass'])
-          @current_resource.time_created =
-            ::Google::Storage::Property::Time.api_parse(fetch['timeCreated'])
-          @current_resource._updated =
-            ::Google::Storage::Property::Time.api_parse(fetch['updated'])
-          @current_resource.versioning =
-            ::Google::Storage::Property::BucketVersioning.api_parse(
-              fetch['versioning']
-            )
-          @current_resource.website =
-            ::Google::Storage::Property::BucketWebsite.api_parse(
-              fetch['website']
-            )
+          @current_resource.role =
+            ::Google::Storage::Property::Enum.api_parse(fetch['role'])
 
           update
         end
@@ -214,53 +141,35 @@ module Google
 
       action :delete do
         fetch = fetch_resource(@new_resource, self_link(@new_resource),
-                               'storage#bucket')
+                               'storage#objectAccessControl')
         unless fetch.nil?
-          converge_by "Deleting gstorage_bucket[#{new_resource.name}]" do
+          converge_by ['Deleting gstorage_object_access_control',
+                       "[#{new_resource.name}]"].join do
             delete_req = ::Google::Storage::Network::Delete.new(
               self_link(@new_resource), fetch_auth(@new_resource)
             )
-            return_if_object delete_req.send, 'storage#bucket'
+            return_if_object delete_req.send, 'storage#objectAccessControl'
           end
         end
       end
 
       # TODO(nelsonjr): Add actions :manage and :modify
 
-      def exports
-        {
-          name: b_label
-        }
-      end
-
       private
 
       action_class do
-        # rubocop:disable Metric/AbcSize
-        # rubocop:disable Metrics/MethodLength
         def resource_to_request
           request = {
-            kind: 'storage#bucket',
-            acl: new_resource.acl,
-            cors: new_resource.cors,
-            defaultObjectAcl: new_resource.default_object_acl,
-            lifecycle: new_resource.lifecycle,
-            location: new_resource.location,
-            logging: new_resource.logging,
-            metageneration: new_resource.metageneration,
-            name: new_resource.b_label,
-            owner: new_resource.owner,
-            storageClass: new_resource.storage_class,
-            versioning: new_resource.versioning,
-            website: new_resource.website,
-            project: new_resource.project,
-            predefinedDefaultObjectAcl:
-              new_resource.predefined_default_object_acl
+            kind: 'storage#objectAccessControl',
+            bucket: new_resource.bucket,
+            entity: new_resource.entity,
+            entityId: new_resource.entity_id,
+            object: new_resource.object,
+            projectTeam: new_resource.project_team,
+            role: new_resource.role
           }.reject { |_, v| v.nil? }
           request.to_json
         end
-        # rubocop:enable Metrics/MethodLength
-        # rubocop:enable Metric/AbcSize
 
         def update
           converge_if_changed do |_vars|
@@ -273,36 +182,32 @@ module Google
                                                   fetch_auth(@new_resource),
                                                   'application/json',
                                                   resource_to_request)
-            return_if_object update_req.send, 'storage#bucket'
+            return_if_object update_req.send, 'storage#objectAccessControl'
           end
         end
 
-        # rubocop:disable Metrics/MethodLength
+        def self.fetch_export(resource, type, id, property)
+          return if id.nil?
+          resource.resources("#{type}[#{id}]").exports[property]
+        end
+
         def self.resource_to_hash(resource)
           {
-            name: resource.b_label,
-            kind: 'storage#bucket',
-            acl: resource.acl,
-            cors: resource.cors,
-            default_object_acl: resource.default_object_acl,
-            id: resource.id,
-            lifecycle: resource.lifecycle,
-            location: resource.location,
-            logging: resource.logging,
-            metageneration: resource.metageneration,
-            owner: resource.owner,
-            project_number: resource.project_number,
-            storage_class: resource.storage_class,
-            time_created: resource.time_created,
-            updated: resource._updated,
-            versioning: resource.versioning,
-            website: resource.website,
             project: resource.project,
-            predefined_default_object_acl:
-              resource.predefined_default_object_acl
+            name: resource.name,
+            kind: 'storage#objectAccessControl',
+            bucket: resource.bucket,
+            domain: resource.domain,
+            email: resource.email,
+            entity: resource.entity,
+            entity_id: resource.entity_id,
+            generation: resource.generation,
+            id: resource.id,
+            object: resource.object,
+            project_team: resource.project_team,
+            role: resource.role
           }.reject { |_, v| v.nil? }
         end
-        # rubocop:enable Metrics/MethodLength
 
         # Copied from Chef > Provider > #converge_if_changed
         def compute_changes
@@ -380,7 +285,7 @@ module Google
           URI.join(
             'https://www.googleapis.com/storage/v1/',
             expand_variables(
-              'b?project={{project}}',
+              'b/{{bucket}}/o/{{object}}/acl',
               data
             )
           )
@@ -394,7 +299,7 @@ module Google
           URI.join(
             'https://www.googleapis.com/storage/v1/',
             expand_variables(
-              'b/{{name}}?projection=full',
+              'b/{{bucket}}/o/{{object}}/acl/{{entity}}',
               data
             )
           )
@@ -463,6 +368,5 @@ module Google
         end
       end
     end
-    # rubocop:enable Metrics/ClassLength
   end
 end

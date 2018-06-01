@@ -101,6 +101,7 @@ chef-codegen:
   * libraries/google/storage/property/bucket_action.rb
   * libraries/google/storage/property/bucket_condition.rb
   * libraries/google/storage/property/bucket_cors.rb
+  * libraries/google/storage/property/bucket_default_object_acl.rb
   * libraries/google/storage/property/bucket_lifecycle.rb
   * libraries/google/storage/property/bucket_logging.rb
   * libraries/google/storage/property/bucket_name.rb
@@ -110,8 +111,10 @@ chef-codegen:
   * libraries/google/storage/property/bucket_versioning.rb
   * libraries/google/storage/property/bucket_website.rb
   * libraries/google/storage/property/bucketaccesscontrol_project_team.rb
+  * libraries/google/storage/property/defaultobjectacl_project_team.rb
   * libraries/google/storage/property/enum.rb
   * libraries/google/storage/property/integer.rb
+  * libraries/google/storage/property/objectaccesscontrol_project_team.rb
   * libraries/google/storage/property/string.rb
   * libraries/google/storage/property/string_array.rb
   * libraries/google/storage/property/time.rb
@@ -121,14 +124,20 @@ chef-codegen:
   * recipes/examples~bucket.rb
   * recipes/examples~bucket_access_control.rb
   * recipes/examples~bucket~acl.rb
+  * recipes/examples~default_object_acl.rb
   * recipes/examples~delete_bucket.rb
+  * recipes/examples~object_access_control.rb
   * recipes/README.md
   * recipes/tests~bucket.rb
   * recipes/tests~bucket_access_control.rb
   * recipes/tests~bucket~acl.rb
+  * recipes/tests~default_object_acl.rb
   * recipes/tests~delete_bucket.rb
+  * recipes/tests~object_access_control.rb
   * resources/bucket.rb
   * resources/bucket_access_control.rb
+  * resources/default_object_acl.rb
+  * resources/object_access_control.rb
   * spec/bucket_access_control_spec.rb
   * spec/bucket_spec.rb
   * spec/bundle.rb
@@ -145,6 +154,19 @@ chef-codegen:
   * spec/data/network/gstorage_bucket_access_control/success2~title.yaml
   * spec/data/network/gstorage_bucket_access_control/success3~name.yaml
   * spec/data/network/gstorage_bucket_access_control/success3~title.yaml
+  * spec/data/network/gstorage_default_object_acl/success1~name.yaml
+  * spec/data/network/gstorage_default_object_acl/success1~title.yaml
+  * spec/data/network/gstorage_default_object_acl/success2~name.yaml
+  * spec/data/network/gstorage_default_object_acl/success2~title.yaml
+  * spec/data/network/gstorage_default_object_acl/success3~name.yaml
+  * spec/data/network/gstorage_default_object_acl/success3~title.yaml
+  * spec/data/network/gstorage_object_access_control/success1~name.yaml
+  * spec/data/network/gstorage_object_access_control/success1~title.yaml
+  * spec/data/network/gstorage_object_access_control/success2~name.yaml
+  * spec/data/network/gstorage_object_access_control/success2~title.yaml
+  * spec/data/network/gstorage_object_access_control/success3~name.yaml
+  * spec/data/network/gstorage_object_access_control/success3~title.yaml
+  * spec/default_object_acl_spec.rb
   * spec/fake_auth.rb
   * spec/fake_cred.rb
   * spec/foodcritic_spec.rb
@@ -154,6 +176,7 @@ chef-codegen:
   * spec/network_get_spec.rb
   * spec/network_post_spec.rb
   * spec/network_put_spec.rb
+  * spec/object_access_control_spec.rb
   * spec/spec_helper.rb
   * spec/test_constants.rb
 
