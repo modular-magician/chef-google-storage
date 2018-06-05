@@ -118,7 +118,6 @@ chef-codegen:
   * libraries/google/storage/property/string.rb
   * libraries/google/storage/property/string_array.rb
   * libraries/google/storage/property/time.rb
-  * LICENSE
   * metadata.rb
   * README.md
   * recipes/examples~bucket.rb
