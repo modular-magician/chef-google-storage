@@ -32,7 +32,7 @@ end
 
 gstorage_bucket 'storage-bucket' do
   action :create
-  project 'google.com:graphite-playground'
+  project ENV['PROJECT'] # ex: 'my-test-project'
   credential 'mycred'
 end
 ```
@@ -137,7 +137,7 @@ A bucket is always owned by the project team owners group.
 # manifest.
 gstorage_bucket 'storage-module-test' do
   action :create
-  project 'google.com:graphite-playground'
+  project ENV['PROJECT'] # ex: 'my-test-project'
   credential 'mycred'
 end
 
@@ -561,7 +561,7 @@ gstorage_bucket_access_control 'user-nelsona@google.com' do
   bucket 'storage-module-test'
   entity 'user-nelsona@google.com'
   role 'WRITER'
-  project 'google.com:graphite-playground'
+  project ENV['PROJECT'] # ex: 'my-test-project'
   credential 'mycred'
 end
 
