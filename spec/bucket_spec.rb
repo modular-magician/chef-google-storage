@@ -80,9 +80,8 @@ context 'gstorage_bucket' do
               # add in the mocked version so that the tests do not fail.
               # Since cookbooks can have any name, we assume that
               # any directory with the word auth is the google-gauth cookbook.
-              if Dir.entries(parent_dir).select { |p| p.include? 'auth' }.empty?
-                cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
-              end
+              cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
+
               ChefSpec::SoloRunner.new(
                 step_into: 'gstorage_bucket',
                 cookbook_path: cookbook_paths,
@@ -680,9 +679,8 @@ context 'gstorage_bucket' do
               # add in the mocked version so that the tests do not fail.
               # Since cookbooks can have any name, we assume that
               # any directory with the word auth is the google-gauth cookbook.
-              if Dir.entries(parent_dir).select { |p| p.include? 'auth' }.empty?
-                cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
-              end
+              cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
+
               ChefSpec::SoloRunner.new(
                 step_into: 'gstorage_bucket',
                 cookbook_path: cookbook_paths,
@@ -1462,9 +1460,8 @@ context 'gstorage_bucket' do
             # add in the mocked version so that the tests do not fail.
             # Since cookbooks can have any name, we assume that
             # any directory with the word auth is the google-gauth cookbook.
-            if Dir.entries(parent_dir).select { |p| p.include? 'auth' }.empty?
-              cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
-            end
+            cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
+
             ChefSpec::SoloRunner.new(
               step_into: 'gstorage_bucket',
               cookbook_path: cookbook_paths,
@@ -1984,9 +1981,8 @@ context 'gstorage_bucket' do
             # add in the mocked version so that the tests do not fail.
             # Since cookbooks can have any name, we assume that
             # any directory with the word auth is the google-gauth cookbook.
-            if Dir.entries(parent_dir).select { |p| p.include? 'auth' }.empty?
-              cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
-            end
+            cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
+
             ChefSpec::SoloRunner.new(
               step_into: 'gstorage_bucket',
               cookbook_path: cookbook_paths,
@@ -2367,9 +2363,8 @@ context 'gstorage_bucket' do
             # add in the mocked version so that the tests do not fail.
             # Since cookbooks can have any name, we assume that
             # any directory with the word auth is the google-gauth cookbook.
-            if Dir.entries(parent_dir).select { |p| p.include? 'auth' }.empty?
-              cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
-            end
+            cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
+
             ChefSpec::SoloRunner.new(
               step_into: 'gstorage_bucket',
               cookbook_path: cookbook_paths,
@@ -2431,9 +2426,8 @@ context 'gstorage_bucket' do
             # add in the mocked version so that the tests do not fail.
             # Since cookbooks can have any name, we assume that
             # any directory with the word auth is the google-gauth cookbook.
-            if Dir.entries(parent_dir).select { |p| p.include? 'auth' }.empty?
-              cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
-            end
+            cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
+
             ChefSpec::SoloRunner.new(
               step_into: 'gstorage_bucket',
               cookbook_path: cookbook_paths,
@@ -2499,9 +2493,8 @@ context 'gstorage_bucket' do
             # add in the mocked version so that the tests do not fail.
             # Since cookbooks can have any name, we assume that
             # any directory with the word auth is the google-gauth cookbook.
-            if Dir.entries(parent_dir).select { |p| p.include? 'auth' }.empty?
-              cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
-            end
+            cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
+
             ChefSpec::SoloRunner.new(
               step_into: 'gstorage_bucket',
               cookbook_path: cookbook_paths,
@@ -2568,9 +2561,8 @@ context 'gstorage_bucket' do
             # add in the mocked version so that the tests do not fail.
             # Since cookbooks can have any name, we assume that
             # any directory with the word auth is the google-gauth cookbook.
-            if Dir.entries(parent_dir).select { |p| p.include? 'auth' }.empty?
-              cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
-            end
+            cookbook_paths << File.join(File.dirname(__FILE__), 'cookbooks')
+
             ChefSpec::SoloRunner.new(
               step_into: 'gstorage_bucket',
               cookbook_path: cookbook_paths,
