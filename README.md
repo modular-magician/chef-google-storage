@@ -149,7 +149,7 @@ end
 gstorage_bucket 'id-for-resource' do
   acl                           [
     {
-      bucket       reference to gstorage_bucket,
+      bucket       reference to a gstorage_bucket,
       domain       string,
       email        string,
       entity       string,
@@ -183,7 +183,7 @@ gstorage_bucket 'id-for-resource' do
   ]
   default_object_acl            [
     {
-      bucket       reference to gstorage_bucket,
+      bucket       reference to a gstorage_bucket,
       domain       string,
       email        string,
       entity       string,
@@ -571,7 +571,7 @@ end
 
 ```ruby
 gstorage_bucket_access_control 'id-for-resource' do
-  bucket       reference to gstorage_bucket
+  bucket       reference to a gstorage_bucket
   domain       string
   email        string
   entity       string
@@ -685,7 +685,7 @@ end
 
 ```ruby
 gstorage_object_access_control 'id-for-resource' do
-  bucket       reference to gstorage_bucket
+  bucket       reference to a gstorage_bucket
   domain       string
   email        string
   entity       string
@@ -805,7 +805,7 @@ end
 
 ```ruby
 gstorage_default_object_acl 'id-for-resource' do
-  bucket       reference to gstorage_bucket
+  bucket       reference to a gstorage_bucket
   domain       string
   email        string
   entity       string
