@@ -74,10 +74,6 @@ module Google
                String,
                coerce: ::Google::Storage::Property::String.coerce,
                desired_state: true
-      property :object,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
       property :project_team,
                [Hash, ::Google::Storage::Data::DefaObjeAclProjTeam],
                coerce: ::Google::Storage::Property::DefaObjeAclProjTeam.coerce,
@@ -85,6 +81,14 @@ module Google
       property :role,
                equal_to: %w[OWNER READER],
                coerce: ::Google::Storage::Property::Enum.coerce,
+               desired_state: true
+      property :bucket,
+               [String, ::Google::Storage::Data::BucketNameRef],
+               coerce: ::Google::Storage::Property::BucketNameRef.coerce,
+               desired_state: true
+      property :object,
+               String,
+               coerce: ::Google::Storage::Property::String.coerce,
                desired_state: true
 
       property :credential, String, desired_state: false, required: true
@@ -126,8 +130,6 @@ module Google
             )
           @current_resource.id =
             ::Google::Storage::Property::String.api_parse(fetch['id'])
-          @current_resource.object =
-            ::Google::Storage::Property::String.api_parse(fetch['object'])
           @current_resource.project_team =
             ::Google::Storage::Property::DefaObjeAclProjTeam.api_parse(
               fetch['projectTeam']
@@ -164,7 +166,6 @@ module Google
             bucket: new_resource.bucket,
             entity: new_resource.entity,
             entityId: new_resource.entity_id,
-            object: new_resource.object,
             projectTeam: new_resource.project_team,
             role: new_resource.role
           }.reject { |_, v| v.nil? }
@@ -203,9 +204,10 @@ module Google
             entity_id: resource.entity_id,
             generation: resource.generation,
             id: resource.id,
-            object: resource.object,
             project_team: resource.project_team,
-            role: resource.role
+            role: resource.role,
+            bucket: resource.bucket,
+            object: resource.object
           }.reject { |_, v| v.nil? }
         end
 

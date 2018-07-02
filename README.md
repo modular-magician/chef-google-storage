@@ -149,7 +149,6 @@ end
 gstorage_bucket 'id-for-resource' do
   acl                           [
     {
-      bucket       reference to gstorage_bucket,
       domain       string,
       email        string,
       entity       string,
@@ -190,7 +189,6 @@ gstorage_bucket 'id-for-resource' do
       entity_id    string,
       generation   integer,
       id           string,
-      object       string,
       role         'OWNER' or 'READER',
       project_team {
         team           'editors', 'owners' or 'viewers',
@@ -263,9 +261,6 @@ end
 
 * `acl` -
   Access controls on the bucket.
-
-* `acl[]/bucket`
-  Required. The name of the bucket.
 
 * `acl[]/domain`
   Output only. The domain associated with the entity.
@@ -367,9 +362,6 @@ end
 
 * `default_object_acl[]/id`
   Output only. The ID of the access-control entry.
-
-* `default_object_acl[]/object`
-  The name of the object, if applied to an object.
 
 * `default_object_acl[]/project_team`
   The project team associated with the entity
@@ -599,9 +591,6 @@ end
 
 #### Properties
 
-* `bucket` -
-  Required. The name of the bucket.
-
 * `domain` -
   Output only. The domain associated with the entity.
 
@@ -642,6 +631,9 @@ end
 
 * `role` -
   The access permission for the entity.
+
+* `bucket` -
+  Required. The name of the bucket.
 
 #### Label
 Set the `bac_label` property when attempting to set primary key
@@ -750,9 +742,6 @@ end
 * `id` -
   Output only. The ID of the access-control entry.
 
-* `object` -
-  Required. The name of the object, if applied to an object.
-
 * `project_team` -
   The project team associated with the entity
 
@@ -764,6 +753,12 @@ end
 
 * `role` -
   The access permission for the entity.
+
+* `bucket` -
+  Required. The name of the bucket.
+
+* `object` -
+  Required. The name of the object, if applied to an object.
 
 #### Label
 Set the `oac_label` property when attempting to set primary key
@@ -870,9 +865,6 @@ end
 * `id` -
   Output only. The ID of the access-control entry.
 
-* `object` -
-  The name of the object, if applied to an object.
-
 * `project_team` -
   The project team associated with the entity
 
@@ -884,6 +876,12 @@ end
 
 * `role` -
   The access permission for the entity.
+
+* `bucket` -
+  Required. The name of the bucket.
+
+* `object` -
+  The name of the object, if applied to an object.
 
 #### Label
 Set the `doa_label` property when attempting to set primary key

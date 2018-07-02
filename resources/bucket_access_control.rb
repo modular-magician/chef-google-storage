@@ -46,10 +46,6 @@ module Google
     class BucketAccessControl < Chef::Resource
       resource_name :gstorage_bucket_access_control
 
-      property :bucket,
-               [String, ::Google::Storage::Data::BucketNameRef],
-               coerce: ::Google::Storage::Property::BucketNameRef.coerce,
-               desired_state: true
       property :domain,
                String,
                coerce: ::Google::Storage::Property::String.coerce,
@@ -78,6 +74,10 @@ module Google
                equal_to: %w[OWNER READER WRITER],
                coerce: ::Google::Storage::Property::Enum.coerce,
                desired_state: true
+      property :bucket,
+               [String, ::Google::Storage::Data::BucketNameRef],
+               coerce: ::Google::Storage::Property::BucketNameRef.coerce,
+               desired_state: true
 
       property :credential, String, desired_state: false, required: true
       property :project, String, desired_state: false, required: true
@@ -100,10 +100,6 @@ module Google
           end
         else
           @current_resource = @new_resource.clone
-          @current_resource.bucket =
-            ::Google::Storage::Property::BucketNameRef.api_parse(
-              fetch['bucket']
-            )
           @current_resource.domain =
             ::Google::Storage::Property::String.api_parse(fetch['domain'])
           @current_resource.email =
@@ -147,7 +143,6 @@ module Google
         def resource_to_request
           request = {
             kind: 'storage#bucketAccessControl',
-            bucket: new_resource.bucket,
             entity: new_resource.entity,
             entityId: new_resource.entity_id,
             projectTeam: new_resource.project_team,
@@ -181,14 +176,14 @@ module Google
             project: resource.project,
             name: resource.name,
             kind: 'storage#bucketAccessControl',
-            bucket: resource.bucket,
             domain: resource.domain,
             email: resource.email,
             entity: resource.entity,
             entity_id: resource.entity_id,
             id: resource.id,
             project_team: resource.project_team,
-            role: resource.role
+            role: resource.role,
+            bucket: resource.bucket
           }.reject { |_, v| v.nil? }
         end
 
