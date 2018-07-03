@@ -40,7 +40,6 @@ module Google
         attr_reader :entity_id
         attr_reader :generation
         attr_reader :id
-        attr_reader :object
         attr_reader :project_team
         attr_reader :role
 
@@ -53,7 +52,6 @@ module Google
             'entityId' => entity_id,
             'generation' => generation,
             'id' => id,
-            'object' => object,
             'projectTeam' => project_team,
             'role' => role
           }.reject { |_k, v| v.nil? }.to_json
@@ -68,7 +66,6 @@ module Google
             entity_id: entity_id.to_s,
             generation: generation.to_s,
             id: id.to_s,
-            object: object.to_s,
             project_team: project_team.to_s,
             role: role.to_s
           }.map { |k, v| "#{k}: #{v}" }.join(', ')
@@ -108,7 +105,6 @@ module Google
             { self: entity_id, other: other.entity_id },
             { self: generation, other: other.generation },
             { self: id, other: other.id },
-            { self: object, other: other.object },
             { self: project_team, other: other.project_team },
             { self: role, other: other.role }
           ]
@@ -129,7 +125,6 @@ module Google
           @generation =
             Google::Storage::Property::Integer.api_parse(args['generation'])
           @id = Google::Storage::Property::String.api_parse(args['id'])
-          @object = Google::Storage::Property::String.api_parse(args['object'])
           @project_team =
             Google::Storage::Property::BucketProjectTeam.api_parse(
               args['projectTeam']
@@ -155,8 +150,6 @@ module Google
           @generation =
             Google::Storage::Property::Integer.catalog_parse(args[:generation])
           @id = Google::Storage::Property::String.catalog_parse(args[:id])
-          @object =
-            Google::Storage::Property::String.catalog_parse(args[:object])
           @project_team =
             Google::Storage::Property::BucketProjectTeam.catalog_parse(
               args[:project_team]

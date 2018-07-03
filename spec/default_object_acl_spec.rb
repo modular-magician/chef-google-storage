@@ -196,16 +196,21 @@ context 'gstorage_default_object_acl' do
                   .to have_attributes(entity_id: 'test entity_id#0 data')
               end
 
-              it do
-                is_expected.to have_attributes(object: 'test object#0 data')
-              end
-
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
               # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
+
+              it do
+                is_expected.to have_attributes(object: 'test object#0 data')
+              end
             end
 
             context 'gstorage_default_object_acl[title1]' do
@@ -227,16 +232,21 @@ context 'gstorage_default_object_acl' do
                   .to have_attributes(entity_id: 'test entity_id#1 data')
               end
 
-              it do
-                is_expected.to have_attributes(object: 'test object#1 data')
-              end
-
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
               # end
 
               it { is_expected.to have_attributes(role: 'READER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
+
+              it do
+                is_expected.to have_attributes(object: 'test object#1 data')
+              end
             end
 
             context 'gstorage_default_object_acl[title2]' do
@@ -258,16 +268,21 @@ context 'gstorage_default_object_acl' do
                   .to have_attributes(entity_id: 'test entity_id#2 data')
               end
 
-              it do
-                is_expected.to have_attributes(object: 'test object#2 data')
-              end
-
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
               # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
+
+              it do
+                is_expected.to have_attributes(object: 'test object#2 data')
+              end
             end
           end
 
@@ -416,16 +431,21 @@ context 'gstorage_default_object_acl' do
                   .to have_attributes(entity_id: 'test entity_id#0 data')
               end
 
-              it do
-                is_expected.to have_attributes(object: 'test object#0 data')
-              end
-
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
               # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
+
+              it do
+                is_expected.to have_attributes(object: 'test object#0 data')
+              end
             end
 
             context 'gstorage_default_object_acl[title1]' do
@@ -447,16 +467,21 @@ context 'gstorage_default_object_acl' do
                   .to have_attributes(entity_id: 'test entity_id#1 data')
               end
 
-              it do
-                is_expected.to have_attributes(object: 'test object#1 data')
-              end
-
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
               # end
 
               it { is_expected.to have_attributes(role: 'READER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
+
+              it do
+                is_expected.to have_attributes(object: 'test object#1 data')
+              end
             end
 
             context 'gstorage_default_object_acl[title2]' do
@@ -478,16 +503,21 @@ context 'gstorage_default_object_acl' do
                   .to have_attributes(entity_id: 'test entity_id#2 data')
               end
 
-              it do
-                is_expected.to have_attributes(object: 'test object#2 data')
-              end
-
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
               # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
+
+              it do
+                is_expected.to have_attributes(object: 'test object#2 data')
+              end
             end
           end
 
@@ -550,7 +580,6 @@ context 'gstorage_default_object_acl' do
                 'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
                 'entityId' => 'test entity_id#0 data',
-                'object' => 'test object#0 data',
                 'projectTeam' => {
                   'projectNumber' => 'test project_number#0 data',
                   'team' => 'editors'
@@ -638,14 +667,19 @@ context 'gstorage_default_object_acl' do
             is_expected.to have_attributes(entity_id: 'test entity_id#0 data')
           end
 
-          it { is_expected.to have_attributes(object: 'test object#0 data') }
-
           # TODO(nelsonjr): Implement complex nested property object test.
           # it 'projectTeam' do
           #   # Add test code here
           # end
 
           it { is_expected.to have_attributes(role: 'OWNER') }
+
+          # TODO(alexstephen): Implement resourceref test.
+          # it 'bucket' do
+          #   # Add test code here
+          # end
+
+          it { is_expected.to have_attributes(object: 'test object#0 data') }
         end
 
         # Ensure present: resource missing, ignore, no name, fail
@@ -669,7 +703,6 @@ context 'gstorage_default_object_acl' do
                 'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
                 'entityId' => 'test entity_id#0 data',
-                'object' => 'test object#0 data',
                 'projectTeam' => {
                   'projectNumber' => 'test project_number#0 data',
                   'team' => 'editors'
@@ -757,14 +790,19 @@ context 'gstorage_default_object_acl' do
             is_expected.to have_attributes(entity_id: 'test entity_id#0 data')
           end
 
-          it { is_expected.to have_attributes(object: 'test object#0 data') }
-
           # TODO(nelsonjr): Implement complex nested property object test.
           # it 'projectTeam' do
           #   # Add test code here
           # end
 
           it { is_expected.to have_attributes(role: 'OWNER') }
+
+          # TODO(alexstephen): Implement resourceref test.
+          # it 'bucket' do
+          #   # Add test code here
+          # end
+
+          it { is_expected.to have_attributes(object: 'test object#0 data') }
         end
 
         # Ensure present: resource missing, ignore, has name, fail
@@ -1232,6 +1270,55 @@ context 'gstorage_default_object_acl' do
     )
   end
 
+  def expect_network_get_success_bucket(id, data = {})
+    id_data = data.fetch(:name, '').include?('title') ? 'title' : 'name'
+    body = load_network_result_bucket("success#{id}~" \
+                                                           "#{id_data}.yaml")
+           .to_json
+    uri = uri_data_bucket(id).merge(data)
+
+    request = double('request')
+    allow(request).to receive(:send).and_return(http_success(body))
+
+    debug_network "!! GET #{uri}"
+    expect(Google::Storage::Network::Get).to receive(:new)
+      .with(self_link_bucket(uri),
+            instance_of(Google::FakeAuthorization)) do |args|
+      debug_network ">> GET #{args}"
+      request
+    end
+  end
+
+  def load_network_result_bucket(file)
+    results = File.join(File.dirname(__FILE__), 'data', 'network',
+                        'gstorage_bucket', file)
+    raise "Network result data file #{results}" unless File.exist?(results)
+    data = YAML.safe_load(File.read(results))
+    raise "Invalid network results #{results}" unless data.class <= Hash
+    data
+  end
+
+  # Creates variable test data to comply with self_link URI parameters
+  # Only used for gstorage_bucket objects
+  def uri_data_bucket(id)
+    {
+      name: GoogleTests::Constants::B_NAME_DATA[(id - 1) \
+        % GoogleTests::Constants::B_NAME_DATA.size],
+      project: GoogleTests::Constants::B_PROJECT_DATA[(id - 1) \
+        % GoogleTests::Constants::B_PROJECT_DATA.size]
+    }
+  end
+
+  def self_link_bucket(data)
+    URI.join(
+      'https://www.googleapis.com/storage/v1/',
+      expand_variables_bucket(
+        'b/{{name}}?projection=full',
+        data
+      )
+    )
+  end
+
   def debug(message)
     puts(message) if ENV['RSPEC_DEBUG']
   end
@@ -1239,6 +1326,11 @@ context 'gstorage_default_object_acl' do
   def debug_network(message)
     puts("Network #{message}") \
       if ENV['RSPEC_DEBUG'] || ENV['RSPEC_HTTP_VERBOSE']
+  end
+
+  def expand_variables_bucket(template, data, ext_dat = {})
+    Google::GSTORAGE::Bucket
+      .action_class.expand_variables(template, data, ext_dat)
   end
 
   def expand_variables_bucket(template, data, ext_dat = {})
