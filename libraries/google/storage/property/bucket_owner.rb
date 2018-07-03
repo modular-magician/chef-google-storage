@@ -28,7 +28,7 @@
 module Google
   module Storage
     module Data
-      # A class to manage data for owner for bucket.
+      # A class to manage data for Owner for bucket.
       class BucketOwner
         include Comparable
 
@@ -105,7 +105,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to owner for bucket.
+      # A class to manage input to Owner for bucket.
       class BucketOwner
         def self.coerce
           ->(x) { ::Google::Storage::Property::BucketOwner.catalog_parse(x) }

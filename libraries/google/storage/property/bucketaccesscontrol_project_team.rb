@@ -28,7 +28,7 @@
 module Google
   module Storage
     module Data
-      # A class to manage data for project_team for bucket_access_control.
+      # A class to manage data for ProjectTeam for bucket_access_control.
       class BuckAcceContProjTeam
         include Comparable
 
@@ -105,7 +105,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to project_team for bucket_access_control.
+      # A class to manage input to ProjectTeam for bucket_access_control.
       class BuckAcceContProjTeam
         def self.coerce
           lambda do |x|

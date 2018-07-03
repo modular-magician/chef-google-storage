@@ -29,7 +29,7 @@ require 'google/storage/property/array'
 module Google
   module Storage
     module Data
-      # A class to manage data for acl for bucket.
+      # A class to manage data for Acl for bucket.
       class BucketAcl
         include Comparable
 
@@ -154,7 +154,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to acl for bucket.
+      # A class to manage input to Acl for bucket.
       class BucketAcl
         def self.coerce
           ->(x) { ::Google::Storage::Property::BucketAcl.catalog_parse(x) }

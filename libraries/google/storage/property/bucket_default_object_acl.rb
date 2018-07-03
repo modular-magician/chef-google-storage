@@ -29,7 +29,7 @@ require 'google/storage/property/array'
 module Google
   module Storage
     module Data
-      # A class to manage data for default_object_acl for bucket.
+      # A class to manage data for DefaultObjectAcl for bucket.
       class BuckeDefauObjecAcl
         include Comparable
 
@@ -167,7 +167,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to default_object_acl for bucket.
+      # A class to manage input to DefaultObjectAcl for bucket.
       class BuckeDefauObjecAcl
         def self.coerce
           lambda do |x|

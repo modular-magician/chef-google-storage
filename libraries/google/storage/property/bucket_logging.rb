@@ -28,7 +28,7 @@
 module Google
   module Storage
     module Data
-      # A class to manage data for logging for bucket.
+      # A class to manage data for Logging for bucket.
       class BucketLogging
         include Comparable
 
@@ -107,7 +107,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to logging for bucket.
+      # A class to manage input to Logging for bucket.
       class BucketLogging
         def self.coerce
           ->(x) { ::Google::Storage::Property::BucketLogging.catalog_parse(x) }

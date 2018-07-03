@@ -28,7 +28,7 @@
 module Google
   module Storage
     module Data
-      # A class to manage data for website for bucket.
+      # A class to manage data for Website for bucket.
       class BucketWebsite
         include Comparable
 
@@ -108,7 +108,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to website for bucket.
+      # A class to manage input to Website for bucket.
       class BucketWebsite
         def self.coerce
           ->(x) { ::Google::Storage::Property::BucketWebsite.catalog_parse(x) }

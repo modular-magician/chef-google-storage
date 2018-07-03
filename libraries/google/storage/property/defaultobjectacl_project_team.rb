@@ -28,7 +28,7 @@
 module Google
   module Storage
     module Data
-      # A class to manage data for project_team for default_object_acl.
+      # A class to manage data for ProjectTeam for default_object_acl.
       class DefaObjeAclProjTeam
         include Comparable
 
@@ -105,7 +105,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to project_team for default_object_acl.
+      # A class to manage input to ProjectTeam for default_object_acl.
       class DefaObjeAclProjTeam
         def self.coerce
           lambda do |x|
