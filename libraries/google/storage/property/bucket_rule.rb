@@ -29,7 +29,7 @@ require 'google/storage/property/array'
 module Google
   module Storage
     module Data
-      # A class to manage data for rule for bucket.
+      # A class to manage data for Rule for bucket.
       class BucketRule
         include Comparable
 
@@ -109,7 +109,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to rule for bucket.
+      # A class to manage input to Rule for bucket.
       class BucketRule
         def self.coerce
           ->(x) { ::Google::Storage::Property::BucketRule.catalog_parse(x) }

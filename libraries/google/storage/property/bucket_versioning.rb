@@ -28,7 +28,7 @@
 module Google
   module Storage
     module Data
-      # A class to manage data for versioning for bucket.
+      # A class to manage data for Versioning for bucket.
       class BucketVersioning
         include Comparable
 
@@ -98,7 +98,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to versioning for bucket.
+      # A class to manage input to Versioning for bucket.
       class BucketVersioning
         def self.coerce
           lambda do |x|

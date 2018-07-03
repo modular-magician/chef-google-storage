@@ -29,7 +29,7 @@ require 'google/storage/property/array'
 module Google
   module Storage
     module Data
-      # A class to manage data for cors for bucket.
+      # A class to manage data for Cors for bucket.
       class BucketCors
         include Comparable
 
@@ -127,7 +127,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to cors for bucket.
+      # A class to manage input to Cors for bucket.
       class BucketCors
         def self.coerce
           ->(x) { ::Google::Storage::Property::BucketCors.catalog_parse(x) }
