@@ -2378,6 +2378,7 @@ context 'gstorage_bucket' do
               <<-MANIFEST
                 gstorage_bucket 'title0' do
                   action :delete
+                  predefined_default_object_acl 'authenticatedRead'
                   project 'test project#0 data'
                   credential 'mycred'
                 end
@@ -2442,6 +2443,7 @@ context 'gstorage_bucket' do
                 gstorage_bucket 'title0' do
                   action :delete
                   b_label 'test name#0 data'
+                  predefined_default_object_acl 'authenticatedRead'
                   project 'test project#0 data'
                   credential 'mycred'
                 end
@@ -2508,6 +2510,7 @@ context 'gstorage_bucket' do
               <<-MANIFEST
                 gstorage_bucket 'title0' do
                   action :delete
+                  predefined_default_object_acl 'authenticatedRead'
                   project 'test project#0 data'
                   credential 'mycred'
                 end
@@ -2577,6 +2580,7 @@ context 'gstorage_bucket' do
                 gstorage_bucket 'title0' do
                   action :delete
                   b_label 'test name#0 data'
+                  predefined_default_object_acl 'authenticatedRead'
                   project 'test project#0 data'
                   credential 'mycred'
                 end
