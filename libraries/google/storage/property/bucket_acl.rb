@@ -33,7 +33,6 @@ module Google
       class BucketAcl
         include Comparable
 
-        attr_reader :bucket
         attr_reader :domain
         attr_reader :email
         attr_reader :entity
@@ -44,7 +43,6 @@ module Google
 
         def to_json(_arg = nil)
           {
-            'bucket' => bucket,
             'domain' => domain,
             'email' => email,
             'entity' => entity,
@@ -57,7 +55,6 @@ module Google
 
         def to_s
           {
-            bucket: bucket.to_s,
             domain: domain.to_s,
             email: email.to_s,
             entity: entity.to_s,
@@ -95,7 +92,6 @@ module Google
 
         def compare_fields(other)
           [
-            { self: bucket, other: other.bucket },
             { self: domain, other: other.domain },
             { self: email, other: other.email },
             { self: entity, other: other.entity },
@@ -111,8 +107,6 @@ module Google
       # Data is coming from the GCP API
       class BucketAclApi < BucketAcl
         def initialize(args)
-          @bucket =
-            Google::Storage::Property::BucketNameRef.api_parse(args['bucket'])
           @domain = Google::Storage::Property::String.api_parse(args['domain'])
           @email = Google::Storage::Property::String.api_parse(args['email'])
           @entity = Google::Storage::Property::String.api_parse(args['entity'])
@@ -132,9 +126,6 @@ module Google
       class BucketAclCatalog < BucketAcl
         # rubocop:disable Metrics/MethodLength
         def initialize(args)
-          @bucket = Google::Storage::Property::BucketNameRef.catalog_parse(
-            args[:bucket]
-          )
           @domain =
             Google::Storage::Property::String.catalog_parse(args[:domain])
           @email = Google::Storage::Property::String.catalog_parse(args[:email])

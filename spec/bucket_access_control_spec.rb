@@ -180,11 +180,6 @@ context 'gstorage_bucket_access_control' do
                                        'title0')
               end
 
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
-
               it do
                 is_expected.to have_attributes(entity: 'test entity#0 data')
               end
@@ -200,6 +195,11 @@ context 'gstorage_bucket_access_control' do
               # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
             end
 
             context 'gstorage_bucket_access_control[title1]' do
@@ -207,11 +207,6 @@ context 'gstorage_bucket_access_control' do
                 chef_run.find_resource(:gstorage_bucket_access_control,
                                        'title1')
               end
-
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
 
               it do
                 is_expected.to have_attributes(entity: 'test entity#1 data')
@@ -228,6 +223,11 @@ context 'gstorage_bucket_access_control' do
               # end
 
               it { is_expected.to have_attributes(role: 'READER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
             end
 
             context 'gstorage_bucket_access_control[title2]' do
@@ -235,11 +235,6 @@ context 'gstorage_bucket_access_control' do
                 chef_run.find_resource(:gstorage_bucket_access_control,
                                        'title2')
               end
-
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
 
               it do
                 is_expected.to have_attributes(entity: 'test entity#2 data')
@@ -256,6 +251,11 @@ context 'gstorage_bucket_access_control' do
               # end
 
               it { is_expected.to have_attributes(role: 'WRITER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
             end
           end
 
@@ -388,11 +388,6 @@ context 'gstorage_bucket_access_control' do
                                        'title0')
               end
 
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
-
               it do
                 is_expected.to have_attributes(entity: 'test entity#0 data')
               end
@@ -408,6 +403,11 @@ context 'gstorage_bucket_access_control' do
               # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
             end
 
             context 'gstorage_bucket_access_control[title1]' do
@@ -415,11 +415,6 @@ context 'gstorage_bucket_access_control' do
                 chef_run.find_resource(:gstorage_bucket_access_control,
                                        'title1')
               end
-
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
 
               it do
                 is_expected.to have_attributes(entity: 'test entity#1 data')
@@ -436,6 +431,11 @@ context 'gstorage_bucket_access_control' do
               # end
 
               it { is_expected.to have_attributes(role: 'READER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
             end
 
             context 'gstorage_bucket_access_control[title2]' do
@@ -443,11 +443,6 @@ context 'gstorage_bucket_access_control' do
                 chef_run.find_resource(:gstorage_bucket_access_control,
                                        'title2')
               end
-
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
 
               it do
                 is_expected.to have_attributes(entity: 'test entity#2 data')
@@ -464,6 +459,11 @@ context 'gstorage_bucket_access_control' do
               # end
 
               it { is_expected.to have_attributes(role: 'WRITER') }
+
+              # TODO(alexstephen): Implement resourceref test.
+              # it 'bucket' do
+              #   # Add test code here
+              # end
             end
           end
 
@@ -523,7 +523,6 @@ context 'gstorage_bucket_access_control' do
               1,
               {
                 'kind' => 'storage#bucketAccessControl',
-                'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
                 'entityId' => 'test entity_id#0 data',
                 'projectTeam' => {
@@ -601,11 +600,6 @@ context 'gstorage_bucket_access_control' do
             expect(chef_run).to create(:gstorage_bucket_access_control,
                                        'title0')
           end
-          # TODO(alexstephen): Implement resourceref test.
-          # it 'bucket' do
-          #   # Add test code here
-          # end
-
           it { is_expected.to have_attributes(entity: 'test entity#0 data') }
 
           it do
@@ -618,6 +612,11 @@ context 'gstorage_bucket_access_control' do
           # end
 
           it { is_expected.to have_attributes(role: 'OWNER') }
+
+          # TODO(alexstephen): Implement resourceref test.
+          # it 'bucket' do
+          #   # Add test code here
+          # end
         end
 
         # Ensure present: resource missing, ignore, no name, fail
@@ -638,7 +637,6 @@ context 'gstorage_bucket_access_control' do
               1,
               {
                 'kind' => 'storage#bucketAccessControl',
-                'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
                 'entityId' => 'test entity_id#0 data',
                 'projectTeam' => {
@@ -716,11 +714,6 @@ context 'gstorage_bucket_access_control' do
             expect(chef_run).to create(:gstorage_bucket_access_control,
                                        'title0')
           end
-          # TODO(alexstephen): Implement resourceref test.
-          # it 'bucket' do
-          #   # Add test code here
-          # end
-
           it { is_expected.to have_attributes(entity: 'test entity#0 data') }
 
           it do
@@ -733,6 +726,11 @@ context 'gstorage_bucket_access_control' do
           # end
 
           it { is_expected.to have_attributes(role: 'OWNER') }
+
+          # TODO(alexstephen): Implement resourceref test.
+          # it 'bucket' do
+          #   # Add test code here
+          # end
         end
 
         # Ensure present: resource missing, ignore, has name, fail
