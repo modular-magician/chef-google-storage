@@ -19,24 +19,6 @@ This cookbook was tested on the following operating systems:
 * openSUSE 13
 * Windows Server 2008 R2, 2012 R2, 2012 R2 Core, 2016 R2, 2016 R2 Core
 
-## Example
-
-```ruby
-gauth_credential 'mycred' do
-  action :serviceaccount
-  path ENV['CRED_PATH'] # e.g. '/path/to/my_account.json'
-  scopes [
-    'https://www.googleapis.com/auth/devstorage.full_control'
-  ]
-end
-
-gstorage_bucket 'storage-bucket' do
-  action :create
-  project ENV['PROJECT'] # ex: 'my-test-project'
-  credential 'mycred'
-end
-```
-
 ## Credentials
 
 All Google Cloud Platform cookbooks use an unified authentication mechanism,
