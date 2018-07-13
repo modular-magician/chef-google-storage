@@ -119,21 +119,16 @@ module Google
       # Data is coming from the GCP API
       class BuckeDefauObjecAclApi < BuckeDefauObjecAcl
         def initialize(args)
-          @bucket =
-            Google::Storage::Property::BucketNameRef.api_parse(args['bucket'])
+          @bucket = Google::Storage::Property::BucketNameRef.api_parse(args['bucket'])
           @domain = Google::Storage::Property::String.api_parse(args['domain'])
           @email = Google::Storage::Property::String.api_parse(args['email'])
           @entity = Google::Storage::Property::String.api_parse(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.api_parse(args['entityId'])
-          @generation =
-            Google::Storage::Property::Integer.api_parse(args['generation'])
+          @entity_id = Google::Storage::Property::String.api_parse(args['entityId'])
+          @generation = Google::Storage::Property::Integer.api_parse(args['generation'])
           @id = Google::Storage::Property::String.api_parse(args['id'])
           @object = Google::Storage::Property::String.api_parse(args['object'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.api_parse(
-              args['projectTeam']
-            )
+            Google::Storage::Property::BucketProjectTeam.api_parse(args['projectTeam'])
           @role = Google::Storage::Property::Enum.api_parse(args['role'])
         end
       end
@@ -142,25 +137,16 @@ module Google
       # Data is coming from the Chef catalog
       class BuckeDefauObjecAclCatalog < BuckeDefauObjecAcl
         def initialize(args)
-          @bucket = Google::Storage::Property::BucketNameRef.catalog_parse(
-            args[:bucket]
-          )
-          @domain =
-            Google::Storage::Property::String.catalog_parse(args[:domain])
+          @bucket = Google::Storage::Property::BucketNameRef.catalog_parse(args[:bucket])
+          @domain = Google::Storage::Property::String.catalog_parse(args[:domain])
           @email = Google::Storage::Property::String.catalog_parse(args[:email])
-          @entity =
-            Google::Storage::Property::String.catalog_parse(args[:entity])
-          @entity_id =
-            Google::Storage::Property::String.catalog_parse(args[:entity_id])
-          @generation =
-            Google::Storage::Property::Integer.catalog_parse(args[:generation])
+          @entity = Google::Storage::Property::String.catalog_parse(args[:entity])
+          @entity_id = Google::Storage::Property::String.catalog_parse(args[:entity_id])
+          @generation = Google::Storage::Property::Integer.catalog_parse(args[:generation])
           @id = Google::Storage::Property::String.catalog_parse(args[:id])
-          @object =
-            Google::Storage::Property::String.catalog_parse(args[:object])
+          @object = Google::Storage::Property::String.catalog_parse(args[:object])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.catalog_parse(
-              args[:project_team]
-            )
+            Google::Storage::Property::BucketProjectTeam.catalog_parse(args[:project_team])
           @role = Google::Storage::Property::Enum.catalog_parse(args[:role])
         end
       end
@@ -170,9 +156,7 @@ module Google
       # A class to manage input to DefaultObjectAcl for bucket.
       class BuckeDefauObjecAcl
         def self.coerce
-          lambda do |x|
-            ::Google::Storage::Property::BuckeDefauObjecAcl.catalog_parse(x)
-          end
+          ->(x) { ::Google::Storage::Property::BuckeDefauObjecAcl.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog
@@ -193,10 +177,7 @@ module Google
       # A Chef property that holds an integer
       class BuckeDefauObjecAclArray < Google::Storage::Property::Array
         def self.coerce
-          lambda do |x|
-            type = ::Google::Storage::Property::BuckeDefauObjecAclArray
-            type.catalog_parse(x)
-          end
+          ->(x) { ::Google::Storage::Property::BuckeDefauObjecAclArray.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog

@@ -86,10 +86,8 @@ module Google
       # Data is coming from the GCP API
       class BucketWebsiteApi < BucketWebsite
         def initialize(args)
-          @main_page_suffix =
-            Google::Storage::Property::String.api_parse(args['mainPageSuffix'])
-          @not_found_page =
-            Google::Storage::Property::String.api_parse(args['notFoundPage'])
+          @main_page_suffix = Google::Storage::Property::String.api_parse(args['mainPageSuffix'])
+          @not_found_page = Google::Storage::Property::String.api_parse(args['notFoundPage'])
         end
       end
 
@@ -97,12 +95,9 @@ module Google
       # Data is coming from the Chef catalog
       class BucketWebsiteCatalog < BucketWebsite
         def initialize(args)
-          @main_page_suffix = Google::Storage::Property::String.catalog_parse(
-            args[:main_page_suffix]
-          )
-          @not_found_page = Google::Storage::Property::String.catalog_parse(
-            args[:not_found_page]
-          )
+          @main_page_suffix =
+            Google::Storage::Property::String.catalog_parse(args[:main_page_suffix])
+          @not_found_page = Google::Storage::Property::String.catalog_parse(args[:not_found_page])
         end
       end
     end

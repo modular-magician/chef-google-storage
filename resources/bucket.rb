@@ -64,82 +64,56 @@ module Google
       # acl is Array of Google::Storage::Property::BucketAclArray
       property :acl,
                Array,
-               coerce: ::Google::Storage::Property::BucketAclArray.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::BucketAclArray.coerce, desired_state: true
       # cors is Array of Google::Storage::Property::BucketCorsArray
       property :cors,
                Array,
-               coerce: ::Google::Storage::Property::BucketCorsArray.coerce,
-               desired_state: true
-      # default_object_acl is Array of
-      # Google::Storage::Property::BuckeDefauObjecAclArray
+               coerce: ::Google::Storage::Property::BucketCorsArray.coerce, desired_state: true
+      # default_object_acl is Array of Google::Storage::Property::BuckeDefauObjecAclArray
       property :default_object_acl,
                Array,
-               coerce: \
-                 ::Google::Storage::Property::BuckeDefauObjecAclArray.coerce,
+               coerce: ::Google::Storage::Property::BuckeDefauObjecAclArray.coerce,
                desired_state: true
-      property :id,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
+      property :id, String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :lifecycle,
                [Hash, ::Google::Storage::Data::BucketLifecycle],
-               coerce: ::Google::Storage::Property::BucketLifecycle.coerce,
-               desired_state: true
-      property :location,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::BucketLifecycle.coerce, desired_state: true
+      property :location
+               String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :logging,
                [Hash, ::Google::Storage::Data::BucketLogging],
-               coerce: ::Google::Storage::Property::BucketLogging.coerce,
-               desired_state: true
-      property :metageneration,
-               Integer,
-               coerce: ::Google::Storage::Property::Integer.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::BucketLogging.coerce, desired_state: true
+      property :metageneration
+               Integer, coerce: ::Google::Storage::Property::Integer.coerce, desired_state: true
       property :b_label,
                String,
                coerce: ::Google::Storage::Property::String.coerce,
                name_property: true, desired_state: true
       property :owner,
                [Hash, ::Google::Storage::Data::BucketOwner],
-               coerce: ::Google::Storage::Property::BucketOwner.coerce,
-               desired_state: true
-      property :project_number,
-               Integer,
-               coerce: ::Google::Storage::Property::Integer.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::BucketOwner.coerce, desired_state: true
+      property :project_number
+               Integer, coerce: ::Google::Storage::Property::Integer.coerce, desired_state: true
       property :storage_class,
-               equal_to: %w[MULTI_REGIONAL REGIONAL STANDARD
-                            NEARLINE COLDLINE DURABLE_REDUCED_AVAILABILITY],
-               coerce: ::Google::Storage::Property::Enum.coerce,
-               desired_state: true
-      property :time_created,
-               Time,
-               coerce: ::Google::Storage::Property::Time.coerce,
-               desired_state: true
-      property :_updated,
-               Time,
-               coerce: ::Google::Storage::Property::Time.coerce,
-               desired_state: true
+               equal_to: %w[MULTI_REGIONAL
+                            REGIONAL STANDARD NEARLINE COLDLINE DURABLE_REDUCED_AVAILABILITY],
+               coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
+      property :time_created
+               Time, coerce: ::Google::Storage::Property::Time.coerce, desired_state: true
+      property :_updated
+               Time, coerce: ::Google::Storage::Property::Time.coerce, desired_state: true
       property :versioning,
                [Hash, ::Google::Storage::Data::BucketVersioning],
-               coerce: ::Google::Storage::Property::BucketVersioning.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::BucketVersioning.coerce, desired_state: true
       property :website,
                [Hash, ::Google::Storage::Data::BucketWebsite],
-               coerce: ::Google::Storage::Property::BucketWebsite.coerce,
-               desired_state: true
-      property :project,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::BucketWebsite.coerce, desired_state: true
+      property :project
+               String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :predefined_default_object_acl,
                equal_to: %w[authenticatedRead bucketOwnerFullControl
                             bucketOwnerRead private projectPrivate publicRead],
-               coerce: ::Google::Storage::Property::Enum.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
 
       property :credential, String, desired_state: false, required: true
       property :project, String, desired_state: false, required: true
@@ -162,37 +136,23 @@ module Google
         else
           @current_resource = @new_resource.clone
           @current_resource.acl =
-            ::Google::Storage::Property::BucketAclArray.api_parse(
-              fetch['acl']
-            )
+            ::Google::Storage::Property::BucketAclArray.api_parse(fetch['acl'])
           @current_resource.cors =
-            ::Google::Storage::Property::BucketCorsArray.api_parse(
-              fetch['cors']
-            )
-          @current_resource.id =
-            ::Google::Storage::Property::String.api_parse(fetch['id'])
+            ::Google::Storage::Property::BucketCorsArray.api_parse(fetch['cors'])
+          @current_resource.id = ::Google::Storage::Property::String.api_parse(fetch['id'])
           @current_resource.lifecycle =
-            ::Google::Storage::Property::BucketLifecycle.api_parse(
-              fetch['lifecycle']
-            )
+            ::Google::Storage::Property::BucketLifecycle.api_parse(fetch['lifecycle'])
           @current_resource.location =
             ::Google::Storage::Property::String.api_parse(fetch['location'])
           @current_resource.logging =
-            ::Google::Storage::Property::BucketLogging.api_parse(
-              fetch['logging']
-            )
+            ::Google::Storage::Property::BucketLogging.api_parse(fetch['logging'])
           @current_resource.metageneration =
-            ::Google::Storage::Property::Integer.api_parse(
-              fetch['metageneration']
-            )
-          @current_resource.b_label =
-            ::Google::Storage::Property::String.api_parse(fetch['name'])
+            ::Google::Storage::Property::Integer.api_parse(fetch['metageneration'])
+          @current_resource.b_label = ::Google::Storage::Property::String.api_parse(fetch['name'])
           @current_resource.owner =
             ::Google::Storage::Property::BucketOwner.api_parse(fetch['owner'])
           @current_resource.project_number =
-            ::Google::Storage::Property::Integer.api_parse(
-              fetch['projectNumber']
-            )
+            ::Google::Storage::Property::Integer.api_parse(fetch['projectNumber'])
           @current_resource.storage_class =
             ::Google::Storage::Property::Enum.api_parse(fetch['storageClass'])
           @current_resource.time_created =
@@ -200,13 +160,9 @@ module Google
           @current_resource._updated =
             ::Google::Storage::Property::Time.api_parse(fetch['updated'])
           @current_resource.versioning =
-            ::Google::Storage::Property::BucketVersioning.api_parse(
-              fetch['versioning']
-            )
+            ::Google::Storage::Property::BucketVersioning.api_parse(fetch['versioning'])
           @current_resource.website =
-            ::Google::Storage::Property::BucketWebsite.api_parse(
-              fetch['website']
-            )
+            ::Google::Storage::Property::BucketWebsite.api_parse(fetch['website'])
 
           update
         end
@@ -254,8 +210,7 @@ module Google
             versioning: new_resource.versioning,
             website: new_resource.website,
             project: new_resource.project,
-            predefinedDefaultObjectAcl:
-              new_resource.predefined_default_object_acl
+            predefinedDefaultObjectAcl: new_resource.predefined_default_object_acl
           }.reject { |_, v| v.nil? }
           request.to_json
         end
@@ -298,8 +253,7 @@ module Google
             versioning: resource.versioning,
             website: resource.website,
             project: resource.project,
-            predefined_default_object_acl:
-              resource.predefined_default_object_acl
+            predefined_default_object_acl: resource.predefined_default_object_acl
           }.reject { |_, v| v.nil? }
         end
         # rubocop:enable Metrics/MethodLength

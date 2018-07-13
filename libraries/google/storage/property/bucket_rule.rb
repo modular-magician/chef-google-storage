@@ -87,11 +87,8 @@ module Google
       # Data is coming from the GCP API
       class BucketRuleApi < BucketRule
         def initialize(args)
-          @action =
-            Google::Storage::Property::BucketAction.api_parse(args['action'])
-          @condition = Google::Storage::Property::BucketCondition.api_parse(
-            args['condition']
-          )
+          @action = Google::Storage::Property::BucketAction.api_parse(args['action'])
+          @condition = Google::Storage::Property::BucketCondition.api_parse(args['condition'])
         end
       end
 
@@ -99,11 +96,8 @@ module Google
       # Data is coming from the Chef catalog
       class BucketRuleCatalog < BucketRule
         def initialize(args)
-          @action =
-            Google::Storage::Property::BucketAction.catalog_parse(args[:action])
-          @condition = Google::Storage::Property::BucketCondition.catalog_parse(
-            args[:condition]
-          )
+          @action = Google::Storage::Property::BucketAction.catalog_parse(args[:action])
+          @condition = Google::Storage::Property::BucketCondition.catalog_parse(args[:condition])
         end
       end
     end
@@ -133,9 +127,7 @@ module Google
       # A Chef property that holds an integer
       class BucketRuleArray < Google::Storage::Property::Array
         def self.coerce
-          lambda do |x|
-            ::Google::Storage::Property::BucketRuleArray.catalog_parse(x)
-          end
+          ->(x) { ::Google::Storage::Property::BucketRuleArray.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog
