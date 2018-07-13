@@ -86,8 +86,7 @@ module Google
       # Data is coming from the GCP API
       class BucketActionApi < BucketAction
         def initialize(args)
-          @storage_class =
-            Google::Storage::Property::String.api_parse(args['storageClass'])
+          @storage_class = Google::Storage::Property::String.api_parse(args['storageClass'])
           @type = Google::Storage::Property::Enum.api_parse(args['type'])
         end
       end
@@ -96,9 +95,7 @@ module Google
       # Data is coming from the Chef catalog
       class BucketActionCatalog < BucketAction
         def initialize(args)
-          @storage_class = Google::Storage::Property::String.catalog_parse(
-            args[:storage_class]
-          )
+          @storage_class = Google::Storage::Property::String.catalog_parse(args[:storage_class])
           @type = Google::Storage::Property::Enum.catalog_parse(args[:type])
         end
       end

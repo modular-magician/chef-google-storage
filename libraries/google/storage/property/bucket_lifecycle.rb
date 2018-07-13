@@ -84,8 +84,7 @@ module Google
       # Data is coming from the GCP API
       class BucketLifecycleApi < BucketLifecycle
         def initialize(args)
-          @rule =
-            Google::Storage::Property::BucketRuleArray.api_parse(args['rule'])
+          @rule = Google::Storage::Property::BucketRuleArray.api_parse(args['rule'])
         end
       end
 
@@ -93,9 +92,7 @@ module Google
       # Data is coming from the Chef catalog
       class BucketLifecycleCatalog < BucketLifecycle
         def initialize(args)
-          @rule = Google::Storage::Property::BucketRuleArray.catalog_parse(
-            args[:rule]
-          )
+          @rule = Google::Storage::Property::BucketRuleArray.catalog_parse(args[:rule])
         end
       end
     end
@@ -104,9 +101,7 @@ module Google
       # A class to manage input to Lifecycle for bucket.
       class BucketLifecycle
         def self.coerce
-          lambda do |x|
-            ::Google::Storage::Property::BucketLifecycle.catalog_parse(x)
-          end
+          ->(x) { ::Google::Storage::Property::BucketLifecycle.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog

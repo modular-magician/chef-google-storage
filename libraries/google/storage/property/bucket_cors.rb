@@ -95,15 +95,11 @@ module Google
       # Data is coming from the GCP API
       class BucketCorsApi < BucketCors
         def initialize(args)
-          @max_age_seconds =
-            Google::Storage::Property::Integer.api_parse(args['maxAgeSeconds'])
-          @method =
-            Google::Storage::Property::StringArray.api_parse(args['method'])
-          @origin =
-            Google::Storage::Property::StringArray.api_parse(args['origin'])
-          @response_header = Google::Storage::Property::StringArray.api_parse(
-            args['responseHeader']
-          )
+          @max_age_seconds = Google::Storage::Property::Integer.api_parse(args['maxAgeSeconds'])
+          @method = Google::Storage::Property::StringArray.api_parse(args['method'])
+          @origin = Google::Storage::Property::StringArray.api_parse(args['origin'])
+          @response_header =
+            Google::Storage::Property::StringArray.api_parse(args['responseHeader'])
         end
       end
 
@@ -111,17 +107,12 @@ module Google
       # Data is coming from the Chef catalog
       class BucketCorsCatalog < BucketCors
         def initialize(args)
-          @max_age_seconds = Google::Storage::Property::Integer.catalog_parse(
-            args[:max_age_seconds]
-          )
-          @method =
-            Google::Storage::Property::StringArray.catalog_parse(args[:method])
-          @origin =
-            Google::Storage::Property::StringArray.catalog_parse(args[:origin])
+          @max_age_seconds =
+            Google::Storage::Property::Integer.catalog_parse(args[:max_age_seconds])
+          @method = Google::Storage::Property::StringArray.catalog_parse(args[:method])
+          @origin = Google::Storage::Property::StringArray.catalog_parse(args[:origin])
           @response_header =
-            Google::Storage::Property::StringArray.catalog_parse(
-              args[:response_header]
-            )
+            Google::Storage::Property::StringArray.catalog_parse(args[:response_header])
         end
       end
     end
@@ -151,9 +142,7 @@ module Google
       # A Chef property that holds an integer
       class BucketCorsArray < Google::Storage::Property::Array
         def self.coerce
-          lambda do |x|
-            ::Google::Storage::Property::BucketCorsArray.catalog_parse(x)
-          end
+          ->(x) { ::Google::Storage::Property::BucketCorsArray.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog

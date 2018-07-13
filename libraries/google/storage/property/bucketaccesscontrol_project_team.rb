@@ -86,8 +86,7 @@ module Google
       # Data is coming from the GCP API
       class BuckAcceContProjTeamApi < BuckAcceContProjTeam
         def initialize(args)
-          @project_number =
-            Google::Storage::Property::String.api_parse(args['projectNumber'])
+          @project_number = Google::Storage::Property::String.api_parse(args['projectNumber'])
           @team = Google::Storage::Property::Enum.api_parse(args['team'])
         end
       end
@@ -96,9 +95,7 @@ module Google
       # Data is coming from the Chef catalog
       class BuckAcceContProjTeamCatalog < BuckAcceContProjTeam
         def initialize(args)
-          @project_number = Google::Storage::Property::String.catalog_parse(
-            args[:project_number]
-          )
+          @project_number = Google::Storage::Property::String.catalog_parse(args[:project_number])
           @team = Google::Storage::Property::Enum.catalog_parse(args[:team])
         end
       end
@@ -108,9 +105,7 @@ module Google
       # A class to manage input to ProjectTeam for bucket_access_control.
       class BuckAcceContProjTeam
         def self.coerce
-          lambda do |x|
-            ::Google::Storage::Property::BuckAcceContProjTeam.catalog_parse(x)
-          end
+          ->(x) { ::Google::Storage::Property::BuckAcceContProjTeam.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog

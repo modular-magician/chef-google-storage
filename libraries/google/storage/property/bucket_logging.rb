@@ -86,10 +86,8 @@ module Google
       # Data is coming from the GCP API
       class BucketLoggingApi < BucketLogging
         def initialize(args)
-          @log_bucket =
-            Google::Storage::Property::String.api_parse(args['logBucket'])
-          @log_object_prefix =
-            Google::Storage::Property::String.api_parse(args['logObjectPrefix'])
+          @log_bucket = Google::Storage::Property::String.api_parse(args['logBucket'])
+          @log_object_prefix = Google::Storage::Property::String.api_parse(args['logObjectPrefix'])
         end
       end
 
@@ -97,11 +95,9 @@ module Google
       # Data is coming from the Chef catalog
       class BucketLoggingCatalog < BucketLogging
         def initialize(args)
-          @log_bucket =
-            Google::Storage::Property::String.catalog_parse(args[:log_bucket])
-          @log_object_prefix = Google::Storage::Property::String.catalog_parse(
-            args[:log_object_prefix]
-          )
+          @log_bucket = Google::Storage::Property::String.catalog_parse(args[:log_bucket])
+          @log_object_prefix =
+            Google::Storage::Property::String.catalog_parse(args[:log_object_prefix])
         end
       end
     end

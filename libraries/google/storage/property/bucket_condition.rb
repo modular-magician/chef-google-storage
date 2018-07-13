@@ -99,17 +99,12 @@ module Google
       class BucketConditionApi < BucketCondition
         def initialize(args)
           @age_days = Google::Storage::Property::Integer.api_parse(args['age'])
-          @created_before =
-            Google::Storage::Property::Time.api_parse(args['createdBefore'])
-          @is_live =
-            Google::Storage::Property::Boolean.api_parse(args['isLive'])
+          @created_before = Google::Storage::Property::Time.api_parse(args['createdBefore'])
+          @is_live = Google::Storage::Property::Boolean.api_parse(args['isLive'])
           @matches_storage_class =
-            Google::Storage::Property::StringArray.api_parse(
-              args['matchesStorageClass']
-            )
-          @num_newer_versions = Google::Storage::Property::Integer.api_parse(
-            args['numNewerVersions']
-          )
+            Google::Storage::Property::StringArray.api_parse(args['matchesStorageClass'])
+          @num_newer_versions =
+            Google::Storage::Property::Integer.api_parse(args['numNewerVersions'])
         end
       end
 
@@ -117,20 +112,13 @@ module Google
       # Data is coming from the Chef catalog
       class BucketConditionCatalog < BucketCondition
         def initialize(args)
-          @age_days =
-            Google::Storage::Property::Integer.catalog_parse(args[:age_days])
-          @created_before =
-            Google::Storage::Property::Time.catalog_parse(args[:created_before])
-          @is_live =
-            Google::Storage::Property::Boolean.catalog_parse(args[:is_live])
+          @age_days = Google::Storage::Property::Integer.catalog_parse(args[:age_days])
+          @created_before = Google::Storage::Property::Time.catalog_parse(args[:created_before])
+          @is_live = Google::Storage::Property::Boolean.catalog_parse(args[:is_live])
           @matches_storage_class =
-            Google::Storage::Property::StringArray.catalog_parse(
-              args[:matches_storage_class]
-            )
+            Google::Storage::Property::StringArray.catalog_parse(args[:matches_storage_class])
           @num_newer_versions =
-            Google::Storage::Property::Integer.catalog_parse(
-              args[:num_newer_versions]
-            )
+            Google::Storage::Property::Integer.catalog_parse(args[:num_newer_versions])
         end
       end
     end
@@ -139,9 +127,7 @@ module Google
       # A class to manage input to Condition for bucket.
       class BucketCondition
         def self.coerce
-          lambda do |x|
-            ::Google::Storage::Property::BucketCondition.catalog_parse(x)
-          end
+          ->(x) { ::Google::Storage::Property::BucketCondition.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog
