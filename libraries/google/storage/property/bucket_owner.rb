@@ -87,8 +87,7 @@ module Google
       class BucketOwnerApi < BucketOwner
         def initialize(args)
           @entity = Google::Storage::Property::String.api_parse(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.api_parse(args['entityId'])
+          @entity_id = Google::Storage::Property::String.api_parse(args['entityId'])
         end
       end
 
@@ -96,10 +95,8 @@ module Google
       # Data is coming from the Chef catalog
       class BucketOwnerCatalog < BucketOwner
         def initialize(args)
-          @entity =
-            Google::Storage::Property::String.catalog_parse(args[:entity])
-          @entity_id =
-            Google::Storage::Property::String.catalog_parse(args[:entity_id])
+          @entity = Google::Storage::Property::String.catalog_parse(args[:entity])
+          @entity_id = Google::Storage::Property::String.catalog_parse(args[:entity_id])
         end
       end
     end

@@ -48,44 +48,26 @@ module Google
 
       property :bucket,
                [String, ::Google::Storage::Data::BucketNameRef],
-               coerce: ::Google::Storage::Property::BucketNameRef.coerce,
-               desired_state: true
-      property :domain,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
-      property :email,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
-      property :entity,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
-      property :entity_id,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
-      property :generation,
-               Integer,
-               coerce: ::Google::Storage::Property::Integer.coerce,
-               desired_state: true
-      property :id,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
-      property :object,
-               String,
-               coerce: ::Google::Storage::Property::String.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::BucketNameRef.coerce, desired_state: true
+      property :domain
+               String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
+      property :email
+               String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
+      property :entity
+               String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
+      property :entity_id
+               String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
+      property :generation
+               Integer, coerce: ::Google::Storage::Property::Integer.coerce, desired_state: true
+      property :id, String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
+      property :object
+               String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :project_team,
                [Hash, ::Google::Storage::Data::DefaObjeAclProjTeam],
-               coerce: ::Google::Storage::Property::DefaObjeAclProjTeam.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::DefaObjeAclProjTeam.coerce, desired_state: true
       property :role,
                equal_to: %w[OWNER READER],
-               coerce: ::Google::Storage::Property::Enum.coerce,
-               desired_state: true
+               coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
 
       property :credential, String, desired_state: false, required: true
       property :project, String, desired_state: false, required: true
@@ -94,8 +76,7 @@ module Google
         fetch = fetch_resource(@new_resource, self_link(@new_resource),
                                'storage#objectAccessControl')
         if fetch.nil?
-          converge_by ['Creating gstorage_default_object_acl',
-                       "[#{new_resource.name}]"].join do
+          converge_by "Creating gstorage_default_object_acl[#{new_resource.name}]" do
             # TODO(nelsonjr): Show a list of variables to create
             # TODO(nelsonjr): Determine how to print green like update converge
             puts # making a newline until we find a better way TODO: find!
@@ -109,31 +90,22 @@ module Google
         else
           @current_resource = @new_resource.clone
           @current_resource.bucket =
-            ::Google::Storage::Property::BucketNameRef.api_parse(
-              fetch['bucket']
-            )
+            ::Google::Storage::Property::BucketNameRef.api_parse(fetch['bucket'])
           @current_resource.domain =
             ::Google::Storage::Property::String.api_parse(fetch['domain'])
-          @current_resource.email =
-            ::Google::Storage::Property::String.api_parse(fetch['email'])
+          @current_resource.email = ::Google::Storage::Property::String.api_parse(fetch['email'])
           @current_resource.entity =
             ::Google::Storage::Property::String.api_parse(fetch['entity'])
           @current_resource.entity_id =
             ::Google::Storage::Property::String.api_parse(fetch['entityId'])
           @current_resource.generation =
-            ::Google::Storage::Property::Integer.api_parse(
-              fetch['generation']
-            )
-          @current_resource.id =
-            ::Google::Storage::Property::String.api_parse(fetch['id'])
+            ::Google::Storage::Property::Integer.api_parse(fetch['generation'])
+          @current_resource.id = ::Google::Storage::Property::String.api_parse(fetch['id'])
           @current_resource.object =
             ::Google::Storage::Property::String.api_parse(fetch['object'])
           @current_resource.project_team =
-            ::Google::Storage::Property::DefaObjeAclProjTeam.api_parse(
-              fetch['projectTeam']
-            )
-          @current_resource.role =
-            ::Google::Storage::Property::Enum.api_parse(fetch['role'])
+            ::Google::Storage::Property::DefaObjeAclProjTeam.api_parse(fetch['projectTeam'])
+          @current_resource.role = ::Google::Storage::Property::Enum.api_parse(fetch['role'])
 
           update
         end
@@ -143,8 +115,7 @@ module Google
         fetch = fetch_resource(@new_resource, self_link(@new_resource),
                                'storage#objectAccessControl')
         unless fetch.nil?
-          converge_by ['Deleting gstorage_default_object_acl',
-                       "[#{new_resource.name}]"].join do
+          converge_by "Deleting gstorage_default_object_acl[#{new_resource.name}]" do
             delete_req = ::Google::Storage::Network::Delete.new(
               self_link(@new_resource), fetch_auth(@new_resource)
             )

@@ -111,18 +111,14 @@ module Google
       # Data is coming from the GCP API
       class BucketAclApi < BucketAcl
         def initialize(args)
-          @bucket =
-            Google::Storage::Property::BucketNameRef.api_parse(args['bucket'])
+          @bucket = Google::Storage::Property::BucketNameRef.api_parse(args['bucket'])
           @domain = Google::Storage::Property::String.api_parse(args['domain'])
           @email = Google::Storage::Property::String.api_parse(args['email'])
           @entity = Google::Storage::Property::String.api_parse(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.api_parse(args['entityId'])
+          @entity_id = Google::Storage::Property::String.api_parse(args['entityId'])
           @id = Google::Storage::Property::String.api_parse(args['id'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.api_parse(
-              args['projectTeam']
-            )
+            Google::Storage::Property::BucketProjectTeam.api_parse(args['projectTeam'])
           @role = Google::Storage::Property::Enum.api_parse(args['role'])
         end
       end
@@ -132,21 +128,14 @@ module Google
       class BucketAclCatalog < BucketAcl
         # rubocop:disable Metrics/MethodLength
         def initialize(args)
-          @bucket = Google::Storage::Property::BucketNameRef.catalog_parse(
-            args[:bucket]
-          )
-          @domain =
-            Google::Storage::Property::String.catalog_parse(args[:domain])
+          @bucket = Google::Storage::Property::BucketNameRef.catalog_parse(args[:bucket])
+          @domain = Google::Storage::Property::String.catalog_parse(args[:domain])
           @email = Google::Storage::Property::String.catalog_parse(args[:email])
-          @entity =
-            Google::Storage::Property::String.catalog_parse(args[:entity])
-          @entity_id =
-            Google::Storage::Property::String.catalog_parse(args[:entity_id])
+          @entity = Google::Storage::Property::String.catalog_parse(args[:entity])
+          @entity_id = Google::Storage::Property::String.catalog_parse(args[:entity_id])
           @id = Google::Storage::Property::String.catalog_parse(args[:id])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.catalog_parse(
-              args[:project_team]
-            )
+            Google::Storage::Property::BucketProjectTeam.catalog_parse(args[:project_team])
           @role = Google::Storage::Property::Enum.catalog_parse(args[:role])
         end
         # rubocop:enable Metrics/MethodLength

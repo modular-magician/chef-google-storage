@@ -82,8 +82,7 @@ module Google
       # Data is coming from the GCP API
       class BucketVersioningApi < BucketVersioning
         def initialize(args)
-          @enabled =
-            Google::Storage::Property::Boolean.api_parse(args['enabled'])
+          @enabled = Google::Storage::Property::Boolean.api_parse(args['enabled'])
         end
       end
 
@@ -91,8 +90,7 @@ module Google
       # Data is coming from the Chef catalog
       class BucketVersioningCatalog < BucketVersioning
         def initialize(args)
-          @enabled =
-            Google::Storage::Property::Boolean.catalog_parse(args[:enabled])
+          @enabled = Google::Storage::Property::Boolean.catalog_parse(args[:enabled])
         end
       end
     end
@@ -101,9 +99,7 @@ module Google
       # A class to manage input to Versioning for bucket.
       class BucketVersioning
         def self.coerce
-          lambda do |x|
-            ::Google::Storage::Property::BucketVersioning.catalog_parse(x)
-          end
+          ->(x) { ::Google::Storage::Property::BucketVersioning.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog
