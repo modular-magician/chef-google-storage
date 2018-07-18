@@ -35,8 +35,9 @@ require 'google/storage/network/get'
 require 'google/storage/network/post'
 require 'google/storage/network/put'
 require 'google/storage/property/bucket_name'
+require 'google/storage/property/default_object_acl_role'
+require 'google/storage/property/default_object_acl_team'
 require 'google/storage/property/defaultobjectacl_project_team'
-require 'google/storage/property/enum'
 require 'google/storage/property/integer'
 require 'google/storage/property/string'
 
@@ -67,7 +68,7 @@ module Google
                coerce: ::Google::Storage::Property::DefaObjeAclProjTeam.coerce, desired_state: true
       property :role,
                equal_to: %w[OWNER READER],
-               coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
+               coerce: ::Google::Storage::Property::RoleEnum.coerce, desired_state: true
 
       property :credential, String, desired_state: false, required: true
       property :project, String, desired_state: false, required: true
@@ -105,7 +106,7 @@ module Google
             ::Google::Storage::Property::String.api_parse(fetch['object'])
           @current_resource.project_team =
             ::Google::Storage::Property::DefaObjeAclProjTeam.api_parse(fetch['projectTeam'])
-          @current_resource.role = ::Google::Storage::Property::Enum.api_parse(fetch['role'])
+          @current_resource.role = ::Google::Storage::Property::RoleEnum.api_parse(fetch['role'])
 
           update
         end

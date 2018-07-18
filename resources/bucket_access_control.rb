@@ -34,9 +34,10 @@ require 'google/storage/network/delete'
 require 'google/storage/network/get'
 require 'google/storage/network/post'
 require 'google/storage/network/put'
+require 'google/storage/property/bucket_access_control_role'
+require 'google/storage/property/bucket_access_control_team'
 require 'google/storage/property/bucket_name'
 require 'google/storage/property/bucketaccesscontrol_project_team'
-require 'google/storage/property/enum'
 require 'google/storage/property/string'
 
 module Google
@@ -63,7 +64,7 @@ module Google
                coerce: ::Google::Storage::Property::BuckAcceContProjTeam.coerce, desired_state: true
       property :role,
                equal_to: %w[OWNER READER WRITER],
-               coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
+               coerce: ::Google::Storage::Property::RoleEnum.coerce, desired_state: true
 
       property :credential, String, desired_state: false, required: true
       property :project, String, desired_state: false, required: true
@@ -97,7 +98,7 @@ module Google
           @current_resource.id = ::Google::Storage::Property::String.api_parse(fetch['id'])
           @current_resource.project_team =
             ::Google::Storage::Property::BuckAcceContProjTeam.api_parse(fetch['projectTeam'])
-          @current_resource.role = ::Google::Storage::Property::Enum.api_parse(fetch['role'])
+          @current_resource.role = ::Google::Storage::Property::RoleEnum.api_parse(fetch['role'])
 
           update
         end

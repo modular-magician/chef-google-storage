@@ -119,7 +119,7 @@ module Google
           @id = Google::Storage::Property::String.api_parse(args['id'])
           @project_team =
             Google::Storage::Property::BucketProjectTeam.api_parse(args['projectTeam'])
-          @role = Google::Storage::Property::Enum.api_parse(args['role'])
+          @role = Google::Storage::Property::RoleEnum.api_parse(args['role'])
         end
       end
 
@@ -136,7 +136,7 @@ module Google
           @id = Google::Storage::Property::String.catalog_parse(args[:id])
           @project_team =
             Google::Storage::Property::BucketProjectTeam.catalog_parse(args[:project_team])
-          @role = Google::Storage::Property::Enum.catalog_parse(args[:role])
+          @role = Google::Storage::Property::RoleEnum.catalog_parse(args[:role])
         end
         # rubocop:enable Metrics/MethodLength
       end

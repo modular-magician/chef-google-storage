@@ -44,11 +44,15 @@ require 'google/storage/property/bucket_lifecycle'
 require 'google/storage/property/bucket_logging'
 require 'google/storage/property/bucket_name'
 require 'google/storage/property/bucket_owner'
+require 'google/storage/property/bucket_predefined_default_object_acl'
 require 'google/storage/property/bucket_project_team'
+require 'google/storage/property/bucket_role'
 require 'google/storage/property/bucket_rule'
+require 'google/storage/property/bucket_storage_class'
+require 'google/storage/property/bucket_team'
+require 'google/storage/property/bucket_type'
 require 'google/storage/property/bucket_versioning'
 require 'google/storage/property/bucket_website'
-require 'google/storage/property/enum'
 require 'google/storage/property/integer'
 require 'google/storage/property/string'
 require 'google/storage/property/string_array'
@@ -97,7 +101,7 @@ module Google
       property :storage_class,
                equal_to: %w[MULTI_REGIONAL
                             REGIONAL STANDARD NEARLINE COLDLINE DURABLE_REDUCED_AVAILABILITY],
-               coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
+               coerce: ::Google::Storage::Property::StorageClassEnum.coerce, desired_state: true
       property :time_created
                Time, coerce: ::Google::Storage::Property::Time.coerce, desired_state: true
       property :_updated
@@ -113,7 +117,8 @@ module Google
       property :predefined_default_object_acl,
                equal_to: %w[authenticatedRead bucketOwnerFullControl
                             bucketOwnerRead private projectPrivate publicRead],
-               coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
+               coerce: ::Google::Storage::Property::PredefinedDefaultObjectAclEnum.coerce,
+               desired_state: true
 
       property :credential, String, desired_state: false, required: true
       property :project, String, desired_state: false, required: true
@@ -154,7 +159,7 @@ module Google
           @current_resource.project_number =
             ::Google::Storage::Property::Integer.api_parse(fetch['projectNumber'])
           @current_resource.storage_class =
-            ::Google::Storage::Property::Enum.api_parse(fetch['storageClass'])
+            ::Google::Storage::Property::StorageClassEnum.api_parse(fetch['storageClass'])
           @current_resource.time_created =
             ::Google::Storage::Property::Time.api_parse(fetch['timeCreated'])
           @current_resource._updated =

@@ -87,7 +87,7 @@ module Google
       class BucketProjectTeamApi < BucketProjectTeam
         def initialize(args)
           @project_number = Google::Storage::Property::String.api_parse(args['projectNumber'])
-          @team = Google::Storage::Property::Enum.api_parse(args['team'])
+          @team = Google::Storage::Property::TeamEnum.api_parse(args['team'])
         end
       end
 
@@ -96,7 +96,7 @@ module Google
       class BucketProjectTeamCatalog < BucketProjectTeam
         def initialize(args)
           @project_number = Google::Storage::Property::String.catalog_parse(args[:project_number])
-          @team = Google::Storage::Property::Enum.catalog_parse(args[:team])
+          @team = Google::Storage::Property::TeamEnum.catalog_parse(args[:team])
         end
       end
     end
