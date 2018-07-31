@@ -49,18 +49,18 @@ module Google
       property :bucket,
                [String, ::Google::Storage::Data::BucketNameRef],
                coerce: ::Google::Storage::Property::BucketNameRef.coerce, desired_state: true
-      property :domain
+      property :domain,
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
-      property :email
+      property :email,
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
-      property :entity
+      property :entity,
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
-      property :entity_id
+      property :entity_id,
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
-      property :generation
+      property :generation,
                Integer, coerce: ::Google::Storage::Property::Integer.coerce, desired_state: true
       property :id, String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
-      property :object
+      property :object,
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :project_team,
                [Hash, ::Google::Storage::Data::ObjeAcceContProjTeam],
