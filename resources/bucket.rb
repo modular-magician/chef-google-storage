@@ -78,12 +78,12 @@ module Google
       property :lifecycle,
                [Hash, ::Google::Storage::Data::BucketLifecycle],
                coerce: ::Google::Storage::Property::BucketLifecycle.coerce, desired_state: true
-      property :location
+      property :location,
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :logging,
                [Hash, ::Google::Storage::Data::BucketLogging],
                coerce: ::Google::Storage::Property::BucketLogging.coerce, desired_state: true
-      property :metageneration
+      property :metageneration,
                Integer, coerce: ::Google::Storage::Property::Integer.coerce, desired_state: true
       property :b_label,
                String,
@@ -92,15 +92,15 @@ module Google
       property :owner,
                [Hash, ::Google::Storage::Data::BucketOwner],
                coerce: ::Google::Storage::Property::BucketOwner.coerce, desired_state: true
-      property :project_number
+      property :project_number,
                Integer, coerce: ::Google::Storage::Property::Integer.coerce, desired_state: true
       property :storage_class,
                equal_to: %w[MULTI_REGIONAL
                             REGIONAL STANDARD NEARLINE COLDLINE DURABLE_REDUCED_AVAILABILITY],
                coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
-      property :time_created
+      property :time_created,
                Time, coerce: ::Google::Storage::Property::Time.coerce, desired_state: true
-      property :_updated
+      property :_updated,
                Time, coerce: ::Google::Storage::Property::Time.coerce, desired_state: true
       property :versioning,
                [Hash, ::Google::Storage::Data::BucketVersioning],
@@ -108,7 +108,7 @@ module Google
       property :website,
                [Hash, ::Google::Storage::Data::BucketWebsite],
                coerce: ::Google::Storage::Property::BucketWebsite.coerce, desired_state: true
-      property :project
+      property :project,
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :predefined_default_object_acl,
                equal_to: %w[authenticatedRead bucketOwnerFullControl
