@@ -59,8 +59,9 @@ module Google
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :id, String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :project_team,
-               [Hash, ::Google::Storage::Data::BuckAcceContProjTeam],
-               coerce: ::Google::Storage::Property::BuckAcceContProjTeam.coerce, desired_state: true
+               [Hash, ::Google::Storage::Data::BucketAccessControlProjectTeam],
+               coerce: ::Google::Storage::Property::BucketAccessControlProjectTeam.coerce,
+               desired_state: true
       property :role,
                equal_to: %w[OWNER READER WRITER],
                coerce: ::Google::Storage::Property::Enum.coerce, desired_state: true
@@ -96,7 +97,9 @@ module Google
             ::Google::Storage::Property::String.api_parse(fetch['entityId'])
           @current_resource.id = ::Google::Storage::Property::String.api_parse(fetch['id'])
           @current_resource.project_team =
-            ::Google::Storage::Property::BuckAcceContProjTeam.api_parse(fetch['projectTeam'])
+            ::Google::Storage::Property::BucketAccessControlProjectTeam.api_parse(
+              fetch['projectTeam']
+            )
           @current_resource.role = ::Google::Storage::Property::Enum.api_parse(fetch['role'])
 
           update
