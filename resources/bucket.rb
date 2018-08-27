@@ -119,7 +119,8 @@ module Google
       property :project, String, desired_state: false, required: true
 
       action :create do
-        fetch = fetch_resource(@new_resource, self_link(@new_resource), 'storage#bucket')
+        fetch = fetch_resource(@new_resource, self_link(@new_resource),
+                               'storage#bucket')
         if fetch.nil?
           converge_by "Creating gstorage_bucket[#{new_resource.name}]" do
             # TODO(nelsonjr): Show a list of variables to create
@@ -168,7 +169,8 @@ module Google
       end
 
       action :delete do
-        fetch = fetch_resource(@new_resource, self_link(@new_resource), 'storage#bucket')
+        fetch = fetch_resource(@new_resource, self_link(@new_resource),
+                               'storage#bucket')
         unless fetch.nil?
           converge_by "Deleting gstorage_bucket[#{new_resource.name}]" do
             delete_req = ::Google::Storage::Network::Delete.new(

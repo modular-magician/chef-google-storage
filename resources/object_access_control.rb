@@ -74,8 +74,7 @@ module Google
       property :project, String, desired_state: false, required: true
 
       action :create do
-        fetch = fetch_resource(@new_resource,
-                               self_link(@new_resource),
+        fetch = fetch_resource(@new_resource, self_link(@new_resource),
                                'storage#objectAccessControl')
         if fetch.nil?
           converge_by "Creating gstorage_object_access_control[#{new_resource.name}]" do
@@ -116,8 +115,7 @@ module Google
       end
 
       action :delete do
-        fetch = fetch_resource(@new_resource,
-                               self_link(@new_resource),
+        fetch = fetch_resource(@new_resource, self_link(@new_resource),
                                'storage#objectAccessControl')
         unless fetch.nil?
           converge_by "Deleting gstorage_object_access_control[#{new_resource.name}]" do
