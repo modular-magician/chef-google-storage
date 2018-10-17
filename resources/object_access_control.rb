@@ -139,9 +139,7 @@ module Google
             kind: 'storage#objectAccessControl',
             bucket: new_resource.bucket,
             entity: new_resource.entity,
-            entityId: new_resource.entity_id,
             object: new_resource.object,
-            projectTeam: new_resource.project_team,
             role: new_resource.role
           }.reject { |_, v| v.nil? }
           request.to_json
