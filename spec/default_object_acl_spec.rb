@@ -121,13 +121,8 @@ context 'gstorage_default_object_acl' do
                     action :create
                     bucket 'resource(bucket,0)'
                     entity 'test entity#0 data'
-                    entity_id 'test entity_id#0 data'
                     object 'test object#0 data'
                     role 'OWNER'
-                    project_team({
-                      team: 'editors',
-                      project_number: 'test project_number#0 data'
-                    })
                     project 'test project#0 data'
                     credential 'mycred'
                   end
@@ -136,13 +131,8 @@ context 'gstorage_default_object_acl' do
                     action :create
                     bucket 'resource(bucket,1)'
                     entity 'test entity#1 data'
-                    entity_id 'test entity_id#1 data'
                     object 'test object#1 data'
                     role 'READER'
-                    project_team({
-                      team: 'owners',
-                      project_number: 'test project_number#1 data'
-                    })
                     project 'test project#1 data'
                     credential 'mycred'
                   end
@@ -151,13 +141,8 @@ context 'gstorage_default_object_acl' do
                     action :create
                     bucket 'resource(bucket,2)'
                     entity 'test entity#2 data'
-                    entity_id 'test entity_id#2 data'
                     object 'test object#2 data'
                     role 'OWNER'
-                    project_team({
-                      team: 'viewers',
-                      project_number: 'test project_number#2 data'
-                    })
                     project 'test project#2 data'
                     credential 'mycred'
                   end
@@ -183,14 +168,7 @@ context 'gstorage_default_object_acl' do
 
               it { is_expected.to have_attributes(entity: 'test entity#0 data') }
 
-              it { is_expected.to have_attributes(entity_id: 'test entity_id#0 data') }
-
               it { is_expected.to have_attributes(object: 'test object#0 data') }
-
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'projectTeam' do
-              #   # Add test code here
-              # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
             end
@@ -207,14 +185,7 @@ context 'gstorage_default_object_acl' do
 
               it { is_expected.to have_attributes(entity: 'test entity#1 data') }
 
-              it { is_expected.to have_attributes(entity_id: 'test entity_id#1 data') }
-
               it { is_expected.to have_attributes(object: 'test object#1 data') }
-
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'projectTeam' do
-              #   # Add test code here
-              # end
 
               it { is_expected.to have_attributes(role: 'READER') }
             end
@@ -231,14 +202,7 @@ context 'gstorage_default_object_acl' do
 
               it { is_expected.to have_attributes(entity: 'test entity#2 data') }
 
-              it { is_expected.to have_attributes(entity_id: 'test entity_id#2 data') }
-
               it { is_expected.to have_attributes(object: 'test object#2 data') }
-
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'projectTeam' do
-              #   # Add test code here
-              # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
             end
@@ -320,13 +284,8 @@ context 'gstorage_default_object_acl' do
                     action :create
                     bucket 'resource(bucket,0)'
                     entity 'test entity#0 data'
-                    entity_id 'test entity_id#0 data'
                     object 'test object#0 data'
                     role 'OWNER'
-                    project_team({
-                      team: 'editors',
-                      project_number: 'test project_number#0 data'
-                    })
                     project 'test project#0 data'
                     credential 'mycred'
                   end
@@ -335,13 +294,8 @@ context 'gstorage_default_object_acl' do
                     action :create
                     bucket 'resource(bucket,1)'
                     entity 'test entity#1 data'
-                    entity_id 'test entity_id#1 data'
                     object 'test object#1 data'
                     role 'READER'
-                    project_team({
-                      team: 'owners',
-                      project_number: 'test project_number#1 data'
-                    })
                     project 'test project#1 data'
                     credential 'mycred'
                   end
@@ -350,13 +304,8 @@ context 'gstorage_default_object_acl' do
                     action :create
                     bucket 'resource(bucket,2)'
                     entity 'test entity#2 data'
-                    entity_id 'test entity_id#2 data'
                     object 'test object#2 data'
                     role 'OWNER'
-                    project_team({
-                      team: 'viewers',
-                      project_number: 'test project_number#2 data'
-                    })
                     project 'test project#2 data'
                     credential 'mycred'
                   end
@@ -382,14 +331,7 @@ context 'gstorage_default_object_acl' do
 
               it { is_expected.to have_attributes(entity: 'test entity#0 data') }
 
-              it { is_expected.to have_attributes(entity_id: 'test entity_id#0 data') }
-
               it { is_expected.to have_attributes(object: 'test object#0 data') }
-
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'projectTeam' do
-              #   # Add test code here
-              # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
             end
@@ -406,14 +348,7 @@ context 'gstorage_default_object_acl' do
 
               it { is_expected.to have_attributes(entity: 'test entity#1 data') }
 
-              it { is_expected.to have_attributes(entity_id: 'test entity_id#1 data') }
-
               it { is_expected.to have_attributes(object: 'test object#1 data') }
-
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'projectTeam' do
-              #   # Add test code here
-              # end
 
               it { is_expected.to have_attributes(role: 'READER') }
             end
@@ -430,14 +365,7 @@ context 'gstorage_default_object_acl' do
 
               it { is_expected.to have_attributes(entity: 'test entity#2 data') }
 
-              it { is_expected.to have_attributes(entity_id: 'test entity_id#2 data') }
-
               it { is_expected.to have_attributes(object: 'test object#2 data') }
-
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'projectTeam' do
-              #   # Add test code here
-              # end
 
               it { is_expected.to have_attributes(role: 'OWNER') }
             end
@@ -499,12 +427,7 @@ context 'gstorage_default_object_acl' do
                 'kind' => 'storage#objectAccessControl',
                 'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
-                'entityId' => 'test entity_id#0 data',
                 'object' => 'test object#0 data',
-                'projectTeam' => {
-                  'projectNumber' => 'test project_number#0 data',
-                  'team' => 'editors'
-                },
                 'role' => 'OWNER'
               },
               bucket: 'test name#0 data'
@@ -549,13 +472,8 @@ context 'gstorage_default_object_acl' do
                   action :create
                   bucket 'resource(bucket,0)'
                   entity 'test entity#0 data'
-                  entity_id 'test entity_id#0 data'
                   object 'test object#0 data'
                   role 'OWNER'
-                  project_team({
-                    team: 'editors',
-                    project_number: 'test project_number#0 data'
-                  })
                   project 'test project#0 data'
                   credential 'mycred'
                 end
@@ -584,14 +502,7 @@ context 'gstorage_default_object_acl' do
 
           it { is_expected.to have_attributes(entity: 'test entity#0 data') }
 
-          it { is_expected.to have_attributes(entity_id: 'test entity_id#0 data') }
-
           it { is_expected.to have_attributes(object: 'test object#0 data') }
-
-          # TODO(nelsonjr): Implement complex nested property object test.
-          # it 'projectTeam' do
-          #   # Add test code here
-          # end
 
           it { is_expected.to have_attributes(role: 'OWNER') }
         end
@@ -616,12 +527,7 @@ context 'gstorage_default_object_acl' do
                 'kind' => 'storage#objectAccessControl',
                 'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
-                'entityId' => 'test entity_id#0 data',
                 'object' => 'test object#0 data',
-                'projectTeam' => {
-                  'projectNumber' => 'test project_number#0 data',
-                  'team' => 'editors'
-                },
                 'role' => 'OWNER'
               },
               bucket: 'test name#0 data'
@@ -666,13 +572,8 @@ context 'gstorage_default_object_acl' do
                   action :create
                   bucket 'resource(bucket,0)'
                   entity 'test entity#0 data'
-                  entity_id 'test entity_id#0 data'
                   object 'test object#0 data'
                   role 'OWNER'
-                  project_team({
-                    team: 'editors',
-                    project_number: 'test project_number#0 data'
-                  })
                   project 'test project#0 data'
                   credential 'mycred'
                 end
@@ -701,14 +602,7 @@ context 'gstorage_default_object_acl' do
 
           it { is_expected.to have_attributes(entity: 'test entity#0 data') }
 
-          it { is_expected.to have_attributes(entity_id: 'test entity_id#0 data') }
-
           it { is_expected.to have_attributes(object: 'test object#0 data') }
-
-          # TODO(nelsonjr): Implement complex nested property object test.
-          # it 'projectTeam' do
-          #   # Add test code here
-          # end
 
           it { is_expected.to have_attributes(role: 'OWNER') }
         end
@@ -772,6 +666,7 @@ context 'gstorage_default_object_acl' do
                   action :delete
                   bucket 'resource(bucket,0)'
                   entity 'test entity#0 data'
+                  role 'OWNER'
                   project 'test project#0 data'
                   credential 'mycred'
                 end
@@ -845,6 +740,7 @@ context 'gstorage_default_object_acl' do
                   action :delete
                   bucket 'resource(bucket,0)'
                   entity 'test entity#0 data'
+                  role 'OWNER'
                   project 'test project#0 data'
                   credential 'mycred'
                 end
@@ -921,6 +817,7 @@ context 'gstorage_default_object_acl' do
                   action :delete
                   bucket 'resource(bucket,0)'
                   entity 'test entity#0 data'
+                  role 'OWNER'
                   project 'test project#0 data'
                   credential 'mycred'
                 end
@@ -999,6 +896,7 @@ context 'gstorage_default_object_acl' do
                   action :delete
                   bucket 'resource(bucket,0)'
                   entity 'test entity#0 data'
+                  role 'OWNER'
                   project 'test project#0 data'
                   credential 'mycred'
                 end
