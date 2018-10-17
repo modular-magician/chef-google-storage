@@ -332,23 +332,17 @@ end
 
 * `default_object_acl[]/entity`
   Required. The entity holding the permission, in one of the following forms:
-  user-userId
-  user-email
-  group-groupId
-  group-email
-  domain-domain
-  project-team-projectId
-  allUsers
-  allAuthenticatedUsers
-  Examples:
-  The user liz@example.com would be user-liz@example.com.
-  The group example@googlegroups.com would be
-  group-example@googlegroups.com.
-  To refer to all members of the Google Apps for Business domain
-  example.com, the entity would be domain-example.com.
+  * user-{{userId}}
+  * user-{{email}} (such as "user-liz@example.com")
+  * group-{{groupId}}
+  * group-{{email}} (such as "group-example@googlegroups.com")
+  * domain-{{domain}} (such as "domain-example.com")
+  * project-team-{{projectId}}
+  * allUsers
+  * allAuthenticatedUsers
 
 * `default_object_acl[]/entity_id`
-  The ID for the entity
+  Output only. The ID for the entity
 
 * `default_object_acl[]/generation`
   Output only. The content generation of the object, if applied to an object.
@@ -360,7 +354,7 @@ end
   The name of the object, if applied to an object.
 
 * `default_object_acl[]/project_team`
-  The project team associated with the entity
+  Output only. The project team associated with the entity
 
 * `default_object_acl[]/project_team/project_number`
   The project team associated with the entity
@@ -369,7 +363,7 @@ end
   The team.
 
 * `default_object_acl[]/role`
-  The access permission for the entity.
+  Required. The access permission for the entity.
 
 * `id` -
   Output only. The ID of the bucket. For buckets, the id and name properities are the
@@ -649,6 +643,9 @@ object is always an OWNER.
 For more information, see Access Control, with the caveat that this API
 uses READER and OWNER instead of READ and FULL_CONTROL.
 
+#### Reference Guides
+* [API Reference](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls)
+* [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
 #### Example
 
@@ -713,23 +710,17 @@ end
 
 * `entity` -
   Required. The entity holding the permission, in one of the following forms:
-  user-userId
-  user-email
-  group-groupId
-  group-email
-  domain-domain
-  project-team-projectId
-  allUsers
-  allAuthenticatedUsers
-  Examples:
-  The user liz@example.com would be user-liz@example.com.
-  The group example@googlegroups.com would be
-  group-example@googlegroups.com.
-  To refer to all members of the Google Apps for Business domain
-  example.com, the entity would be domain-example.com.
+  * user-{{userId}}
+  * user-{{email}} (such as "user-liz@example.com")
+  * group-{{groupId}}
+  * group-{{email}} (such as "group-example@googlegroups.com")
+  * domain-{{domain}} (such as "domain-example.com")
+  * project-team-{{projectId}}
+  * allUsers
+  * allAuthenticatedUsers
 
 * `entity_id` -
-  The ID for the entity
+  Output only. The ID for the entity
 
 * `generation` -
   Output only. The content generation of the object, if applied to an object.
@@ -741,7 +732,7 @@ end
   Required. The name of the object, if applied to an object.
 
 * `project_team` -
-  The project team associated with the entity
+  Output only. The project team associated with the entity
 
 * `project_team/project_number`
   The project team associated with the entity
@@ -750,7 +741,7 @@ end
   The team.
 
 * `role` -
-  The access permission for the entity.
+  Required. The access permission for the entity.
 
 #### Label
 Set the `oac_label` property when attempting to set primary key
@@ -833,23 +824,17 @@ end
 
 * `entity` -
   Required. The entity holding the permission, in one of the following forms:
-  user-userId
-  user-email
-  group-groupId
-  group-email
-  domain-domain
-  project-team-projectId
-  allUsers
-  allAuthenticatedUsers
-  Examples:
-  The user liz@example.com would be user-liz@example.com.
-  The group example@googlegroups.com would be
-  group-example@googlegroups.com.
-  To refer to all members of the Google Apps for Business domain
-  example.com, the entity would be domain-example.com.
+  * user-{{userId}}
+  * user-{{email}} (such as "user-liz@example.com")
+  * group-{{groupId}}
+  * group-{{email}} (such as "group-example@googlegroups.com")
+  * domain-{{domain}} (such as "domain-example.com")
+  * project-team-{{projectId}}
+  * allUsers
+  * allAuthenticatedUsers
 
 * `entity_id` -
-  The ID for the entity
+  Output only. The ID for the entity
 
 * `generation` -
   Output only. The content generation of the object, if applied to an object.
@@ -861,7 +846,7 @@ end
   The name of the object, if applied to an object.
 
 * `project_team` -
-  The project team associated with the entity
+  Output only. The project team associated with the entity
 
 * `project_team/project_number`
   The project team associated with the entity
@@ -870,7 +855,7 @@ end
   The team.
 
 * `role` -
-  The access permission for the entity.
+  Required. The access permission for the entity.
 
 #### Label
 Set the `doa_label` property when attempting to set primary key
