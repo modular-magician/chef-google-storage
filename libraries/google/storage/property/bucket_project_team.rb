@@ -29,7 +29,7 @@ module Google
   module Storage
     module Data
       # A class to manage data for ProjectTeam for bucket.
-      class BucketProjectTeam
+      class BucketProjectteam
         include Comparable
 
         attr_reader :project_number
@@ -50,7 +50,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? BucketProjectTeam
+          return false unless other.is_a? BucketProjectteam
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -59,7 +59,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? BucketProjectTeam
+          return false unless other.is_a? BucketProjectteam
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -82,18 +82,18 @@ module Google
         end
       end
 
-      # Manages a BucketProjectTeam nested object
+      # Manages a BucketProjectteam nested object
       # Data is coming from the GCP API
-      class BucketProjectTeamApi < BucketProjectTeam
+      class BucketProjectteamApi < BucketProjectteam
         def initialize(args)
           @project_number = Google::Storage::Property::String.api_parse(args['projectNumber'])
           @team = Google::Storage::Property::Enum.api_parse(args['team'])
         end
       end
 
-      # Manages a BucketProjectTeam nested object
+      # Manages a BucketProjectteam nested object
       # Data is coming from the Chef catalog
-      class BucketProjectTeamCatalog < BucketProjectTeam
+      class BucketProjectteamCatalog < BucketProjectteam
         def initialize(args)
           @project_number = Google::Storage::Property::String.catalog_parse(args[:project_number])
           @team = Google::Storage::Property::Enum.catalog_parse(args[:team])
@@ -103,23 +103,23 @@ module Google
 
     module Property
       # A class to manage input to ProjectTeam for bucket.
-      class BucketProjectTeam
+      class BucketProjectteam
         def self.coerce
-          ->(x) { ::Google::Storage::Property::BucketProjectTeam.catalog_parse(x) }
+          ->(x) { ::Google::Storage::Property::BucketProjectteam.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog
         def self.catalog_parse(value)
           return if value.nil?
-          return value if value.is_a? Data::BucketProjectTeam
-          Data::BucketProjectTeamCatalog.new(value)
+          return value if value.is_a? Data::BucketProjectteam
+          Data::BucketProjectteamCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_parse(value)
           return if value.nil?
-          return value if value.is_a? Data::BucketProjectTeam
-          Data::BucketProjectTeamApi.new(value)
+          return value if value.is_a? Data::BucketProjectteam
+          Data::BucketProjectteamApi.new(value)
         end
       end
     end

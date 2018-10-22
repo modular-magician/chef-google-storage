@@ -29,7 +29,7 @@ module Google
   module Storage
     module Data
       # A class to manage data for ProjectTeam for default_object_acl.
-      class DefaultObjectACLProjectTeam
+      class DefaultObjectACLProjectteam
         include Comparable
 
         attr_reader :project_number
@@ -50,7 +50,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? DefaultObjectACLProjectTeam
+          return false unless other.is_a? DefaultObjectACLProjectteam
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -59,7 +59,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? DefaultObjectACLProjectTeam
+          return false unless other.is_a? DefaultObjectACLProjectteam
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -82,18 +82,18 @@ module Google
         end
       end
 
-      # Manages a DefaultObjectACLProjectTeam nested object
+      # Manages a DefaultObjectACLProjectteam nested object
       # Data is coming from the GCP API
-      class DefaultObjectACLProjectTeamApi < DefaultObjectACLProjectTeam
+      class DefaultObjectACLProjectteamApi < DefaultObjectACLProjectteam
         def initialize(args)
           @project_number = Google::Storage::Property::String.api_parse(args['projectNumber'])
           @team = Google::Storage::Property::Enum.api_parse(args['team'])
         end
       end
 
-      # Manages a DefaultObjectACLProjectTeam nested object
+      # Manages a DefaultObjectACLProjectteam nested object
       # Data is coming from the Chef catalog
-      class DefaultObjectACLProjectTeamCatalog < DefaultObjectACLProjectTeam
+      class DefaultObjectACLProjectteamCatalog < DefaultObjectACLProjectteam
         def initialize(args)
           @project_number = Google::Storage::Property::String.catalog_parse(args[:project_number])
           @team = Google::Storage::Property::Enum.catalog_parse(args[:team])
@@ -103,23 +103,23 @@ module Google
 
     module Property
       # A class to manage input to ProjectTeam for default_object_acl.
-      class DefaultObjectACLProjectTeam
+      class DefaultObjectACLProjectteam
         def self.coerce
-          ->(x) { ::Google::Storage::Property::DefaultObjectACLProjectTeam.catalog_parse(x) }
+          ->(x) { ::Google::Storage::Property::DefaultObjectACLProjectteam.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog
         def self.catalog_parse(value)
           return if value.nil?
-          return value if value.is_a? Data::DefaultObjectACLProjectTeam
-          Data::DefaultObjectACLProjectTeamCatalog.new(value)
+          return value if value.is_a? Data::DefaultObjectACLProjectteam
+          Data::DefaultObjectACLProjectteamCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_parse(value)
           return if value.nil?
-          return value if value.is_a? Data::DefaultObjectACLProjectTeam
-          Data::DefaultObjectACLProjectTeamApi.new(value)
+          return value if value.is_a? Data::DefaultObjectACLProjectteam
+          Data::DefaultObjectACLProjectteamApi.new(value)
         end
       end
     end

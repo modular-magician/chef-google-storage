@@ -69,10 +69,10 @@ module Google
       property :cors,
                Array,
                coerce: ::Google::Storage::Property::BucketCorsArray.coerce, desired_state: true
-      # default_object_acl is Array of Google::Storage::Property::BucketDefaultObjectAclArray
+      # default_object_acl is Array of Google::Storage::Property::BucketDefaultobjectaclArray
       property :default_object_acl,
                Array,
-               coerce: ::Google::Storage::Property::BucketDefaultObjectAclArray.coerce,
+               coerce: ::Google::Storage::Property::BucketDefaultobjectaclArray.coerce,
                desired_state: true
       property :id, String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :lifecycle,
