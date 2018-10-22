@@ -30,7 +30,7 @@ module Google
   module Storage
     module Data
       # A class to manage data for DefaultObjectAcl for bucket.
-      class BucketDefaultObjectAcl
+      class BucketDefaultobjectacl
         include Comparable
 
         attr_reader :bucket
@@ -75,7 +75,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? BucketDefaultObjectAcl
+          return false unless other.is_a? BucketDefaultobjectacl
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -84,7 +84,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? BucketDefaultObjectAcl
+          return false unless other.is_a? BucketDefaultobjectacl
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -115,9 +115,9 @@ module Google
         end
       end
 
-      # Manages a BucketDefaultObjectAcl nested object
+      # Manages a BucketDefaultobjectacl nested object
       # Data is coming from the GCP API
-      class BucketDefaultObjectAclApi < BucketDefaultObjectAcl
+      class BucketDefaultobjectaclApi < BucketDefaultobjectacl
         def initialize(args)
           @bucket = Google::Storage::Property::BucketNameRef.api_parse(args['bucket'])
           @domain = Google::Storage::Property::String.api_parse(args['domain'])
@@ -128,14 +128,14 @@ module Google
           @id = Google::Storage::Property::String.api_parse(args['id'])
           @object = Google::Storage::Property::String.api_parse(args['object'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.api_parse(args['projectTeam'])
+            Google::Storage::Property::BucketProjectteam.api_parse(args['projectTeam'])
           @role = Google::Storage::Property::Enum.api_parse(args['role'])
         end
       end
 
-      # Manages a BucketDefaultObjectAcl nested object
+      # Manages a BucketDefaultobjectacl nested object
       # Data is coming from the Chef catalog
-      class BucketDefaultObjectAclCatalog < BucketDefaultObjectAcl
+      class BucketDefaultobjectaclCatalog < BucketDefaultobjectacl
         def initialize(args)
           @bucket = Google::Storage::Property::BucketNameRef.catalog_parse(args[:bucket])
           @domain = Google::Storage::Property::String.catalog_parse(args[:domain])
@@ -146,7 +146,7 @@ module Google
           @id = Google::Storage::Property::String.catalog_parse(args[:id])
           @object = Google::Storage::Property::String.catalog_parse(args[:object])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.catalog_parse(args[:project_team])
+            Google::Storage::Property::BucketProjectteam.catalog_parse(args[:project_team])
           @role = Google::Storage::Property::Enum.catalog_parse(args[:role])
         end
       end
@@ -154,46 +154,46 @@ module Google
 
     module Property
       # A class to manage input to DefaultObjectAcl for bucket.
-      class BucketDefaultObjectAcl
+      class BucketDefaultobjectacl
         def self.coerce
-          ->(x) { ::Google::Storage::Property::BucketDefaultObjectAcl.catalog_parse(x) }
+          ->(x) { ::Google::Storage::Property::BucketDefaultobjectacl.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog
         def self.catalog_parse(value)
           return if value.nil?
-          return value if value.is_a? Data::BucketDefaultObjectAcl
-          Data::BucketDefaultObjectAclCatalog.new(value)
+          return value if value.is_a? Data::BucketDefaultobjectacl
+          Data::BucketDefaultobjectaclCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_parse(value)
           return if value.nil?
-          return value if value.is_a? Data::BucketDefaultObjectAcl
-          Data::BucketDefaultObjectAclApi.new(value)
+          return value if value.is_a? Data::BucketDefaultobjectacl
+          Data::BucketDefaultobjectaclApi.new(value)
         end
       end
 
       # A Chef property that holds an integer
-      class BucketDefaultObjectAclArray < Google::Storage::Property::Array
+      class BucketDefaultobjectaclArray < Google::Storage::Property::Array
         def self.coerce
-          ->(x) { ::Google::Storage::Property::BucketDefaultObjectAclArray.catalog_parse(x) }
+          ->(x) { ::Google::Storage::Property::BucketDefaultobjectaclArray.catalog_parse(x) }
         end
 
         # Used for parsing Chef catalog
         def self.catalog_parse(value)
           return if value.nil?
-          return BucketDefaultObjectAcl.catalog_parse(value) \
+          return BucketDefaultobjectacl.catalog_parse(value) \
             unless value.is_a?(::Array)
-          value.map { |v| BucketDefaultObjectAcl.catalog_parse(v) }
+          value.map { |v| BucketDefaultobjectacl.catalog_parse(v) }
         end
 
         # Used for parsing GCP API responses
         def self.api_parse(value)
           return if value.nil?
-          return BucketDefaultObjectAcl.api_parse(value) \
+          return BucketDefaultobjectacl.api_parse(value) \
             unless value.is_a?(::Array)
-          value.map { |v| BucketDefaultObjectAcl.api_parse(v) }
+          value.map { |v| BucketDefaultobjectacl.api_parse(v) }
         end
       end
     end

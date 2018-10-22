@@ -63,8 +63,8 @@ module Google
       property :object,
                String, coerce: ::Google::Storage::Property::String.coerce, desired_state: true
       property :project_team,
-               [Hash, ::Google::Storage::Data::ObjectAccessControlProjectTeam],
-               coerce: ::Google::Storage::Property::ObjectAccessControlProjectTeam.coerce,
+               [Hash, ::Google::Storage::Data::ObjectAccessControlProjectteam],
+               coerce: ::Google::Storage::Property::ObjectAccessControlProjectteam.coerce,
                desired_state: true
       property :role,
                equal_to: %w[OWNER READER],
@@ -106,7 +106,7 @@ module Google
           @current_resource.object =
             ::Google::Storage::Property::String.api_parse(fetch['object'])
           @current_resource.project_team =
-            ::Google::Storage::Property::ObjectAccessControlProjectTeam.api_parse(
+            ::Google::Storage::Property::ObjectAccessControlProjectteam.api_parse(
               fetch['projectTeam']
             )
           @current_resource.role = ::Google::Storage::Property::Enum.api_parse(fetch['role'])

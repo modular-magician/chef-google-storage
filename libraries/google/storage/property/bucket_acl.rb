@@ -118,7 +118,7 @@ module Google
           @entity_id = Google::Storage::Property::String.api_parse(args['entityId'])
           @id = Google::Storage::Property::String.api_parse(args['id'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.api_parse(args['projectTeam'])
+            Google::Storage::Property::BucketProjectteam.api_parse(args['projectTeam'])
           @role = Google::Storage::Property::Enum.api_parse(args['role'])
         end
       end
@@ -135,7 +135,7 @@ module Google
           @entity_id = Google::Storage::Property::String.catalog_parse(args[:entity_id])
           @id = Google::Storage::Property::String.catalog_parse(args[:id])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.catalog_parse(args[:project_team])
+            Google::Storage::Property::BucketProjectteam.catalog_parse(args[:project_team])
           @role = Google::Storage::Property::Enum.catalog_parse(args[:role])
         end
         # rubocop:enable Metrics/MethodLength
